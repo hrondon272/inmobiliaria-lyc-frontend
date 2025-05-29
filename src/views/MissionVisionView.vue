@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-white text-white">
     <div
-      class="w-12 md:w-10 mx-auto text-2xl p-4"
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
       :style="{ backgroundColor: companyData?.colorSecundario }"
     >
       MISIÓN Y VISIÓN
@@ -16,25 +16,24 @@
         <div class="col-12 md:col-6">
           <h2 class="font-bold">Misión</h2>
           <p class="text-justify mt-4">
-            En Terra Realtor, nos apasiona conectar a las personas con propiedades únicas que
-            representen su estilo de vida y sus aspiraciones. Nos especializamos en ofrecer un
-            portafolio cuidadosamente seleccionado de fincas, lotes, apartamentos y casas ubicadas
-            en las zonas más estratégicas y deseadas del oriente antioqueño, como Llanogrande, El
-            Retiro, La Ceja, El Carmen de Viboral y Rionegro. A través de una asesoría
-            personalizada, confiable y profesional, trabajamos para garantizar que cada cliente
-            encuentre no solo una propiedad, sino un espacio que pueda llamar hogar, convirtiendo
-            cada inversión en una experiencia gratificante y significativa.
+            En Inmobiliaria Aguirre, nuestra misión es brindar soluciones inmobiliarias confiables,
+            transparentes y responsables, que respondan a las necesidades reales de la comunidad de
+            Segovia. Como pioneros en el municipio, durante estos 4 años hemos trabajado con
+            paciencia, compromiso y vocación de servicio, educando a nuestros clientes y generando
+            confianza a través de resultados concretos. Nuestro propósito es seguir construyendo un
+            mercado inmobiliario sólido y profesional, donde cada cliente se sienta acompañado,
+            informado y seguro al tomar decisiones sobre su patrimonio.
           </p>
           <h2 class="mt-4 font-bold">Visión</h2>
           <p class="text-justify mt-4">
-            Para el año 2028, nos consolidaremos como la inmobiliaria líder en la venta de
-            propiedades de lujo en el oriente antioqueño, siendo reconocidos por nuestra excelencia
-            en el servicio y nuestra capacidad para anticiparnos a las necesidades de nuestros
-            clientes. Con un enfoque en la exclusividad y el alto valor de nuestras propiedades,
-            aspiramos a ser el aliado de confianza para quienes buscan un hogar que refleje su
-            estilo de vida o una inversión segura. Nuestra meta es construir relaciones sólidas y
-            duraderas, guiando a cada cliente con dedicación y compromiso hacia su hogar soñado o su
-            próxima gran inversión.
+            En Inmobiliaria Aguirre L y C nos proyectamos como una empresa en constante crecimiento,
+            con el objetivo de ampliar nuestra presencia en nuevos territorios y consolidarnos como
+            referentes del sector inmobiliario en la región. Buscamos mejorar en todos los sentidos:
+            en la calidad de nuestros servicios, en la atención al cliente y en la eficiencia de
+            nuestros procesos, apostándole siempre a la formación continua y a la actualización
+            profesional. Nuestra visión es seguir avanzando con responsabilidad, manteniendo
+            nuestros valores y fortaleciendo nuestro conocimiento para brindar un servicio cada vez
+            más completo, confiable y cercano a las necesidades del mercado.
           </p>
           <ButtonPrime
             class="my-4"
@@ -57,6 +56,9 @@ const authStore = useAuthStore()
 const companyData = computed(() => authStore.getCompanyData)
 
 const abrirChatWhatsappAsesor = () => {
-    window.open(`https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=Hola,%20me%20interesa%20saber%20m%C3%A1s%20sobre%20ustedes`, '_blank')
+  window.open(
+    `https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=Hola,%20me%20interesa%20saber%20m%C3%A1s%20sobre%20ustedes`,
+    '_blank'
+  )
 }
 </script>

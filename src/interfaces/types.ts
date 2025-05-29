@@ -12,7 +12,8 @@ export interface CompanyStructure {
     }
     ciudades: string[];
     tipos_inmuebles: string[];
-    logo: File
+    logo: File;
+    esPro: boolean;
 }
 
 export interface SocialNetwork {
@@ -48,8 +49,8 @@ export interface Inmueble {
     descripcion?: string,
     caracteristicas?: string,
     areaMetrosCuadrados?: string,
-    coordenadas?: { 
-        latitud: number, 
+    coordenadas?: {
+        latitud: number,
         longitud: number
     },
     videos: FormVideosInmueble
@@ -79,8 +80,8 @@ export interface FormInmueble {
     descripcion: string,
     precio: number,
     precioNegociable: false,
-    coordenadas: { 
-        latitud: number, 
+    coordenadas: {
+        latitud: number,
         longitud: number
     },
     idTipo: boolean | null,
@@ -110,11 +111,31 @@ export interface VideoInmueble {
     urlVideo: string,
 }
 
-export interface filtrosAvanzadosType{
-    precioDesde: null|number,
-    precioHasta: null|number,
-    dormitorios: null|number,
-    banos: null|number,
-    area: null|string,
-    caracteristicasEspeciales: null|string
+export interface filtrosAvanzadosType {
+    precioDesde: null | number,
+    precioHasta: null | number,
+    dormitorios: null | number,
+    banos: null | number,
+    area: null | string,
+    caracteristicasEspeciales: null | string
+}
+
+export interface menuItem {
+    label: string
+    icon?: string
+    route?: string
+    items?: menuItem[]
+}
+
+export interface homeFilters {
+    tipoSeleccionado?: null | number,
+    ciudadSeleccionada?: null | number,
+    palabraClave?: null | string,
+    precioDesde?: null | number,
+    precioHasta?: null | number,
+    dormitorios?: null | number,
+    banos?: null | number,
+    area?: null | string,
+    caracteristicasEspeciales?: null | string,
+    presupuesto?: null | number
 }
