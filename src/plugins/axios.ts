@@ -23,14 +23,16 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     function (response) {
         return response;
-    }, 
+    },
     function (error) {
-        if (error.response && error.response.status === 401) {
+        const requestUrl = error?.config?.url || '';
+        if (error.response && error.response.status === 401 && !requestUrl.includes('/login')) {
             sessionStorage.setItem('sessionExpired', 'true');
             location.reload();
-        }else{
-            return error.response;
+            return;
         }
+
+        return error;
     }
 );
 
