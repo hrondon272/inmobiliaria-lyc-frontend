@@ -1,5 +1,5 @@
 <template>
-    <div id="propertiesMap" class="w-10 mx-auto"></div>
+  <div id="propertiesMap" class="w-10 mx-auto"></div>
 </template>
 
 <script setup lang="ts">
@@ -19,12 +19,11 @@ const companyData = computed(() => authStore.getCompanyData)
 onMounted(async () => {
   await useInmueble.fetchInmuebles({ disponible: true }, 1, 100)
   nextTick(() => {
-    const mapContainer = document.getElementById('propertiesMap');
-    console.log(mapContainer)
+    const mapContainer = document.getElementById('propertiesMap')
     if (mapContainer) {
-      initLeafletMap();
+      initLeafletMap()
     } else {
-      console.error("Map container not found.");
+      console.error('Map container not found.')
     }
   })
 })

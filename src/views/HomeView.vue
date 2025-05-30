@@ -296,8 +296,6 @@ const companyData = computed(() => authStore.getCompanyData)
 const listarFiltrosPersonalizados = async () => {
   const query: LocationQuery = {}
 
-  console.log(form.value)
-  console.log(query)
   if (form.value.tipoSeleccionado) query.tipoSeleccionado = String(form.value.tipoSeleccionado)
   if (form.value.ciudadSeleccionada)
     query.ciudadSeleccionada = String(form.value.ciudadSeleccionada)
