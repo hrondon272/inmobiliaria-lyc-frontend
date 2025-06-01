@@ -9,7 +9,7 @@
           <div v-for="(item, index) in companyData?.redes_sociales" :key="index">
             <ButtonPrime
               :icon="item.icono"
-              :style="{ backgroundColor: item.color, borderColor: 'white' }"
+              :style="{ backgroundImage: item.color, color: '#FFF' }"
               :aria-label="item.nombre"
               v-tooltip.bottom="item.nombre"
               outlined
@@ -26,7 +26,8 @@
             aria-label="Iniciar sesión"
             :style="{
               backgroundColor: companyData?.colorSecundario,
-              borderColor: companyData?.colorSecundario
+              borderColor: companyData?.colorSecundario,
+              color: '#000'
             }"
             @click="actionLoginButton"
           />
@@ -173,7 +174,7 @@ const actionLoginButton = async () => {
 }
 
 const abrirChatWhatsapp = async () => {
-  const url = `https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=Hola!`
+  const url = `https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=Hola! estoy interesad@ en tus servicios de inmobiliaria`
   window.open(url, '_blank')
 }
 

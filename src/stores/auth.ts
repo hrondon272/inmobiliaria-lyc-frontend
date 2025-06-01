@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { 
+import type {
     CompanyStructure
 } from '@/interfaces/types';
 import {
@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('auth', {
         async login({ email, password }: loginDataForm) {
             try {
                 const res = await login(email, password);
-                
+
                 if (res?.status === 200) {
                     this.isAuthenticated = true;
                     sessionStorage.setItem('isAuthenticated', 'true');
@@ -57,18 +57,19 @@ export const useAuthStore = defineStore('auth', {
             deleteCookie("token");
             location.href = '/';
         },
-        async updateCompanyColors({ colorPrimario, colorSecundario, colorTerciario }: CompanyStructure ) {
+        async updateCompanyColors({ colorPrimario, colorSecundario, colorTerciario }: CompanyStructure) {
             if (this.company) {
                 this.company.colorPrimario = colorPrimario;
                 this.company.colorSecundario = colorSecundario;
                 this.company.colorTerciario = colorTerciario;
             }
         },
-        async updateCompanyInfo({ nombre, email, compania, telefono, redes_sociales, urlLogo }: CompanyStructure ) {
+        async updateCompanyInfo({ nombre, email, compania, direccion, telefono, redes_sociales, urlLogo }: CompanyStructure) {
             if (this.company) {
                 this.company.nombre = nombre;
                 this.company.email = email;
                 this.company.compania = compania;
+                this.company.direccion = direccion;
                 this.company.telefono = telefono;
                 this.company.redes_sociales = redes_sociales;
                 this.company.urlLogo = urlLogo;

@@ -1,6 +1,11 @@
 <template>
-  <DialogPrime v-model:visible="internalVisible" modal header="Iniciar sesión" @hide="closeDialog()"
-    :style="{ width: '25rem' }">
+  <DialogPrime
+    v-model:visible="internalVisible"
+    modal
+    header="Iniciar sesión"
+    @hide="closeDialog()"
+    :style="{ width: '25rem' }"
+  >
     <div class="flex justify-content-center gap-3 mb-4 my-2">
       <label for="email" class="font-semibold w-3">Correo</label>
       <InputText id="email" v-model="form.email" />
@@ -33,9 +38,9 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import { useRouter } from 'vue-router'
 import { useLoaderStore } from '@/stores/loader'
-import { useToast } from '../plugins/useToast';
+import { useToast } from '../plugins/useToast'
 
-const { showMessage } = useToast();
+const { showMessage } = useToast()
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -46,7 +51,7 @@ const props = defineProps({
 const internalVisible = ref(props.visible)
 
 const emit = defineEmits(['update:visible'])
-const loaderStore = useLoaderStore();
+const loaderStore = useLoaderStore()
 
 const form = ref({
   email: '',
@@ -89,9 +94,14 @@ const login = async () => {
     internalVisible.value = false
     router.push('/dashboard')
   } else if (status === 401) {
-    showMessage('warn', '', 'Contraseña incorrecta', 6000);
+    showMessage('warn', '', 'Usuario y/o contraseña incorrecto(s)', 6000)
   } else {
-    showMessage('error', 'Error', 'Por favor vuelva a intentar o comuníquese con nuestro equipo', 10000);
+    showMessage(
+      'error',
+      'Error',
+      'Por favor vuelva a intentar o comuníquese con nuestro equipo',
+      10000
+    )
   }
 }
 </script>

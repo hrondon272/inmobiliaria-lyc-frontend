@@ -5,28 +5,62 @@
     :style="{ backgroundColor: companyData?.colorPrimario }"
   >
     <footer class="mt-3 bg-gray-900 w-full text-center py-3">
-      <i class="pi pi-mobile mr-1"></i>
-      Llámanos {{ companyData?.telefono }} - 3008743754
-      <div class="text-xs md:text-xl"></div>
-      <h2>Visitanos en redes sociales</h2>
-      <div
-        class="flex align-items-center justify-content-center bg-primary border-round gap-1 my-2"
-      >
-        <div v-for="(item, index) in companyData?.redes_sociales" :key="index">
-          <ButtonPrime
-            :icon="item.icono"
-            :href="item.link"
-            :style="{ backgroundColor: item.color }"
-            :aria-label="item.nombre"
-            outlined
-            text
-            raised
-            target="_blank"
-            rel="noopener"
-          />
+      <div class="grid mx-auto p-4">
+        <div class="col-12 md:col-6">
+          <p class="text-xl text-white font-semibold text-center mb-2">Contáctanos</p>
+          <i class="pi pi-mobile mr-1"></i>
+          Llámanos {{ companyData?.telefono }} - 3008743754
+          <p>{{ companyData?.email }}</p>
+          <p class="mt-2 text-xl">Visítanos en redes sociales</p>
+          <div v-for="(item, index) in companyData?.redes_sociales" :key="index">
+            <ButtonPrime
+              :icon="item.icono"
+              :href="item.link"
+              :style="{ backgroundImage: item.color, color: '#FFF', margin: '4px' }"
+              :aria-label="item.nombre"
+              v-tooltip.bottom="item.nombre"
+              outlined
+              text
+              raised
+              target="_blank"
+              rel="noopener"
+              @click="navegarA(item.link)"
+            />
+          </div>
+        </div>
+        <div class="col-12 md:col-6">
+          <p class="text-xl text-white font-semibold text-center mb-2">Horario de atención</p>
+          <p>
+            <span class="font-bold">Lunes: </span>
+            <span>9:00 AM - 6:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Martes: </span>
+            <span>9:00 AM - 6:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Miércoles: </span>
+            <span>9:00 AM - 6:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Jueves: </span>
+            <span>9:00 AM - 6:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Viernes: </span>
+            <span>9:00 AM - 6:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Sábado: </span>
+            <span>10:00 AM - 2:00 PM</span>
+          </p>
+          <p>
+            <span class="font-bold">Domingo: </span>
+            <span> No laboramos</span>
+          </p>
         </div>
       </div>
-      <p>
+      <p class="p-1">
         {{ companyData?.compania }} - Todos los Derechos Reservados - &copy;
         {{ new Date().getFullYear() }}
       </p>
@@ -34,10 +68,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 
 const authStore = useAuthStore()
 const companyData = computed(() => authStore.getCompanyData)
+
+const navegarA = (link: string) => {
+  window.open(link, '_blank')
+}
 </script>

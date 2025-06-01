@@ -24,7 +24,7 @@
           <div class="text-center servicio">
             <img
               src="/servicios/avaluo-comercial.png"
-              alt="Avalúo comercial y corporativo"
+              alt="Admnistracion de Inmuebles"
               Width="100%"
             />
             <ButtonPrime
@@ -32,26 +32,35 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="abrirChatWhatsappAsesor('Avalúo comercial y corporativo')"
+              @click="abrirChatWhatsappAsesor('Admnistracion de Inmuebles')"
             />
           </div>
         </div>
         <div v-if="isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Mediciones topográficas – ALIADO</h2>
+          <h2 id="avaluoComercial" class="text-white">Servicio de arrendamiento</h2>
           <hr />
           <p class="text-justify mt-4">
-            Se refiere a la realización de estudios y levantamientos topográficos para determinar
-            las características físicas y geográficas de un terreno. Estas mediciones permiten
-            conocer con exactitud la superficie, contorno, inclinación y elevación del terreno,
-            fundamentales para proyectos de construcción, urbanización, infraestructura y estudios
-            de impacto ambiental.
+            En Inmobiliaria Aguirre, te brindamos una solución integral para el arrendamiento de
+            inmuebles en Segovia. A través de nuestra plataforma digital, podrás acceder a un
+            portafolio completo de propiedades disponibles, eliminando la necesidad de realizar
+            búsquedas puerta a puerta. Gracias a la virtualidad, podrás visualizar fotos,
+            descripciones detalladas y características de cada inmueble, lo que te permitirá tomar
+            decisiones informadas desde la comodidad de tu hogar. Lo que nos diferencia es que todos
+            los inmuebles disponibles en nuestro portal son de nuestra administración directa, lo
+            que garantiza que cada propiedad es real y está verificada. Evitamos los riesgos de
+            fraudes y estafas relacionadas con inmuebles fantasmas, brindándote seguridad y
+            confianza en todo el proceso. Adicionalmente, contamos con una oficina física en un
+            punto estratégico de Segovia, para aquellos clientes que deseen una atención más
+            personalizada o necesiten mayor cercanía y seguridad al realizar sus gestiones. En
+            Inmobiliaria Aguirre, garantizamos un servicio transparente, seguro y eficiente para que
+            tu experiencia de arrendamiento sea sencilla y confiable.
           </p>
         </div>
         <div v-if="isMobile" class="col-12 md:col-4">
           <div class="text-center servicio">
             <img
               src="/servicios/mediciones-topograficas.png"
-              alt="Mediciones topográficas – ALIADO"
+              alt="Servicio de arrendamiento"
               Width="100%"
             />
             <ButtonPrime
@@ -59,7 +68,7 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="abrirChatWhatsappAsesor('Mediciones topográficas – ALIADO')"
+              @click="abrirChatWhatsappAsesor('Servicio de arrendamiento')"
             />
           </div>
         </div>
@@ -67,7 +76,7 @@
           <div class="text-center servicio">
             <img
               src="/servicios/mediciones-topograficas.png"
-              alt="Mediciones topográficas – ALIADO"
+              alt="Servicio de arrendamiento"
               Width="100%"
             />
             <ButtonPrime
@@ -75,7 +84,7 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="abrirChatWhatsappAsesor('Mediciones topográficas – ALIADO')"
+              @click="abrirChatWhatsappAsesor('Servicio de arrendamiento')"
             />
           </div>
         </div>
@@ -137,7 +146,7 @@
           <div class="text-center servicio">
             <img
               src="/servicios/asesoria-alquiler-maquinaria.png"
-              alt="Asesoría y alquiler de maquinaria amarilla"
+              alt="Venta de inmuebles"
               Width="100%"
             />
             <ButtonPrime
@@ -145,28 +154,45 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="abrirChatWhatsappAsesor('Asesoría y alquiler de maquinaria amarilla')"
+              @click="abrirChatWhatsappAsesor('Venta de inmuebles')"
             />
           </div>
         </div>
         <div v-if="isMobile" class="col-12 md:col-8">
           <h2 id="avaluoComercial" class="text-white">
-            Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable
+            Servicio de Corretaje para Captación de Inquilinos
           </h2>
           <hr />
           <p class="text-justify mt-4">
-            Este servicio abarca el diseño, implementación y mantenimiento de espacios verdes.
-            Involucra la selección de plantas ornamentales para embellecimiento, así como la
-            preservación de bosques nativos y la plantación de frutales y árboles maderables,
-            contribuyendo a la conservación ambiental y al aprovechamiento sostenible del espacio
-            natural.
+            En INMOBILIARIA AGUIRRE L Y C, entendemos que muchos propietarios prefieren mantener el
+            control directo sobre la administración de sus inmuebles, pero desean contar con
+            respaldo profesional a la hora de encontrar un inquilino confiable. Por eso ofrecemos
+            nuestro servicio de corretaje especializado en la captación de arrendatarios, diseñado
+            para facilitarle este proceso clave sin necesidad de delegar la administración del
+            inmueble. ¿En qué consiste este servicio? Nos encargamos de todo el proceso de
+            promoción, evaluación y selección del arrendatario ideal, asegurando que cumpla con
+            todos los requisitos establecidos por nuestra inmobiliaria en términos de solvencia
+            económica, estabilidad laboral y antecedentes. Una vez seleccionado el inquilino,
+            realizamos: Publicación y difusión del inmueble en canales especializados. Visitas
+            programadas y atención personalizada a interesados.
+          </p>
+
+          <p class="text-justify mt-4">
+            Recopilación y análisis de documentación del arrendatario. Verificación de referencias
+            personales, laborales y comerciales. Entrega al propietario del expediente completo del
+            inquilino aprobado. ¿Qué recibe el propietario? Un inquilino cuidadosamente evaluado y
+            validado por nuestro equipo. El primer canon de arrendamiento, como pago por el servicio
+            de corretaje. Toda la documentación necesaria para firmar directamente el contrato de
+            arrendamiento y asumir la administración del inmueble. Este modelo permite al
+            propietario conservar el control total sobre su inmueble, mientras se asegura de iniciar
+            la relación arrendaticia con una persona confiable y financieramente sólida.
           </p>
         </div>
         <div v-if="isMobile" class="col-12 md:col-4">
           <div class="text-center servicio">
             <img
               src="/servicios/paisajismo.png"
-              alt="Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable"
+              alt="Servicio de Corretaje para Captación de Inquilinos"
               Width="100%"
             />
             <ButtonPrime
@@ -174,11 +200,7 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="
-                abrirChatWhatsappAsesor(
-                  'Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable'
-                )
-              "
+              @click="abrirChatWhatsappAsesor('Servicio de Corretaje para Captación de Inquilinos')"
             />
           </div>
         </div>
@@ -186,7 +208,7 @@
           <div class="text-center servicio">
             <img
               src="/servicios/paisajismo.png"
-              alt="Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable"
+              alt="Servicio de Corretaje para Captación de Inquilinos"
               Width="100%"
             />
             <ButtonPrime
@@ -194,11 +216,7 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="
-                abrirChatWhatsappAsesor(
-                  'Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable'
-                )
-              "
+              @click="abrirChatWhatsappAsesor('Servicio de Corretaje para Captación de Inquilinos')"
             />
           </div>
         </div>
@@ -218,15 +236,18 @@
             todos los requisitos establecidos por nuestra inmobiliaria en términos de solvencia
             económica, estabilidad laboral y antecedentes. Una vez seleccionado el inquilino,
             realizamos: Publicación y difusión del inmueble en canales especializados. Visitas
-            programadas y atención personalizada a interesados. Recopilación y análisis de
-            documentación del arrendatario. Verificación de referencias personales, laborales y
-            comerciales. Entrega al propietario del expediente completo del inquilino aprobado. ¿Qué
-            recibe el propietario? Un inquilino cuidadosamente evaluado y validado por nuestro
-            equipo. El primer canon de arrendamiento, como pago por el servicio de corretaje. Toda
-            la documentación necesaria para firmar directamente el contrato de arrendamiento y
-            asumir la administración del inmueble. Este modelo permite al propietario conservar el
-            control total sobre su inmueble, mientras se asegura de iniciar la relación arrendaticia
-            con una persona confiable y financieramente sólida.
+            programadas y atención personalizada a interesados.
+          </p>
+
+          <p class="text-justify mt-4">
+            Recopilación y análisis de documentación del arrendatario. Verificación de referencias
+            personales, laborales y comerciales. Entrega al propietario del expediente completo del
+            inquilino aprobado. ¿Qué recibe el propietario? Un inquilino cuidadosamente evaluado y
+            validado por nuestro equipo. El primer canon de arrendamiento, como pago por el servicio
+            de corretaje. Toda la documentación necesaria para firmar directamente el contrato de
+            arrendamiento y asumir la administración del inmueble. Este modelo permite al
+            propietario conservar el control total sobre su inmueble, mientras se asegura de iniciar
+            la relación arrendaticia con una persona confiable y financieramente sólida.
           </p>
         </div>
         <div class="col-12 md:col-8">
@@ -240,35 +261,27 @@
             inmobiliaria se tome con total confianza y seguridad. ¿A quién va dirigido? Propietarios
             que desean vender o arrendar su inmueble. Compradores o arrendatarios que buscan
             asesoría para tomar la mejor decisión. Inversionistas interesados en maximizar la
-            rentabilidad de sus activos inmobiliarios. ¿Qué incluye nuestra asesoría? Análisis del
-            mercado: Estudio de precios, demanda y oportunidades según zona y tipo de inmueble.
-            Valoración comercial: Estimación profesional del valor real del inmueble. Asesoría legal
-            y documental: Revisión de títulos, contratos, promesas de compraventa, cláusulas, etc.
-            Recomendaciones para la puesta en valor del inmueble: Tips para mejorar presentación,
-            fotografía, y percepción del bien. Acompañamiento en procesos notariales y registrales,
-            si aplica. Orientación personalizada según el objetivo del cliente (vender, comprar,
-            arrendar, invertir). Con nuestra asesoría, nuestros clientes acceden a conocimiento
-            especializado, experiencia del mercado y respaldo profesional para tomar decisiones
-            acertadas, minimizar riesgos y lograr los mejores resultados.
+            rentabilidad de sus activos inmobiliarios.
+          </p>
+
+          <p class="text-justify mt-4">
+            ¿Qué incluye nuestra asesoría? Análisis del mercado: Estudio de precios, demanda y
+            oportunidades según zona y tipo de inmueble. Valoración comercial: Estimación
+            profesional del valor real del inmueble. Asesoría legal y documental: Revisión de
+            títulos, contratos, promesas de compraventa, cláusulas, etc. Recomendaciones para la
+            puesta en valor del inmueble: Tips para mejorar presentación, fotografía, y percepción
+            del bien. Acompañamiento en procesos notariales y registrales, si aplica. Orientación
+            personalizada según el objetivo del cliente (vender, comprar, arrendar, invertir). Con
+            nuestra asesoría, nuestros clientes acceden a conocimiento especializado, experiencia
+            del mercado y respaldo profesional para tomar decisiones acertadas, minimizar riesgos y
+            lograr los mejores resultados.
           </p>
         </div>
         <div class="col-12 md:col-4">
           <div class="text-center servicio">
-            <img src="/servicios/asesoria-tributaria.png" alt="Asesoría tributaria" Width="100%" />
-            <ButtonPrime
-              class="my-4"
-              severity="primary"
-              label="Escríbenos"
-              icon="pi pi-whatsapp"
-              @click="abrirChatWhatsappAsesor('Asesoría tributaria')"
-            />
-          </div>
-        </div>
-        <div v-if="!isMobile" class="col-12 md:col-4">
-          <div class="text-center servicio">
             <img
-              src="/servicios/paisajismo.png"
-              alt="Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable"
+              src="/servicios/asesoria-tributaria.png"
+              alt="Servicio de Asesoría Inmobiliaria"
               Width="100%"
             />
             <ButtonPrime
@@ -276,11 +289,23 @@
               severity="primary"
               label="Escríbenos"
               icon="pi pi-whatsapp"
-              @click="
-                abrirChatWhatsappAsesor(
-                  'Paisajismo de plantas ornamentales, bosque nativo, frutales y árboles maderable'
-                )
-              "
+              @click="abrirChatWhatsappAsesor('Servicio de Asesoría Inmobiliaria')"
+            />
+          </div>
+        </div>
+        <div v-if="!isMobile" class="col-12 md:col-4">
+          <div class="text-center servicio">
+            <img
+              src="/servicios/paisajismo.png"
+              alt="Servicio de Asesoría Inmobiliaria"
+              Width="100%"
+            />
+            <ButtonPrime
+              class="my-4"
+              severity="primary"
+              label="Escríbenos"
+              icon="pi pi-whatsapp"
+              @click="abrirChatWhatsappAsesor('Servicio de Asesoría Inmobiliaria')"
             />
           </div>
         </div>
@@ -290,12 +315,59 @@
           </h2>
           <hr />
           <p class="text-justify mt-4">
-            Este servicio abarca el diseño, implementación y mantenimiento de espacios verdes.
-            Involucra la selección de plantas ornamentales para embellecimiento, así como la
-            preservación de bosques nativos y la plantación de frutales y árboles maderables,
-            contribuyendo a la conservación ambiental y al aprovechamiento sostenible del espacio
-            natural.
+            Facilitamos a nuestros clientes la obtención rápida y segura del Certificado de Libertad
+            y Tradición, documento indispensable para conocer el estado legal de un inmueble y
+            avanzar con seguridad en procesos de compraventa, arrendamiento o trámites notariales.
+            ¿Qué es el Certificado de Libertad y Tradición? Es un documento oficial emitido por la
+            Oficina de Registro de Instrumentos Públicos, que contiene el historial legal del
+            inmueble: propietarios anteriores, embargos, hipotecas, limitaciones al dominio, entre
+            otros datos relevantes. ¿A quién va dirigido este servicio? Propietarios que necesitan
+            actualizar sus documentos. Compradores que quieren revisar el estado legal de un
+            inmueble antes de firmar. Inversionistas o abogados que requieren respaldo documental
+            para análisis. Agentes inmobiliarios que agilizan sus procesos con documentos
+            actualizados. ¿Qué incluye nuestro servicio? Solicitud formal ante la Oficina de
+            Registro correspondiente. Pago de tasas o derechos de expedición. Entrega digital o
+            física del certificado. Asesoría básica sobre la lectura e interpretación del documento
+            (opcional).
           </p>
+        </div>
+        <div v-if="isMobile" class="col-12 md:col-8">
+          <h2 id="avaluoComercial" class="text-white">
+            Servicio de Trámite de Certificados de Libertad y Tradición
+          </h2>
+          <hr />
+          <p class="text-justify mt-4">
+            Facilitamos a nuestros clientes la obtención rápida y segura del Certificado de Libertad
+            y Tradición, documento indispensable para conocer el estado legal de un inmueble y
+            avanzar con seguridad en procesos de compraventa, arrendamiento o trámites notariales.
+            ¿Qué es el Certificado de Libertad y Tradición? Es un documento oficial emitido por la
+            Oficina de Registro de Instrumentos Públicos, que contiene el historial legal del
+            inmueble: propietarios anteriores, embargos, hipotecas, limitaciones al dominio, entre
+            otros datos relevantes. ¿A quién va dirigido este servicio? Propietarios que necesitan
+            actualizar sus documentos. Compradores que quieren revisar el estado legal de un
+            inmueble antes de firmar. Inversionistas o abogados que requieren respaldo documental
+            para análisis. Agentes inmobiliarios que agilizan sus procesos con documentos
+            actualizados. ¿Qué incluye nuestro servicio? Solicitud formal ante la Oficina de
+            Registro correspondiente. Pago de tasas o derechos de expedición. Entrega digital o
+            física del certificado. Asesoría básica sobre la lectura e interpretación del documento
+            (opcional).
+          </p>
+        </div>
+        <div v-if="isMobile" class="col-12 md:col-4">
+          <div class="text-center servicio">
+            <img
+              src="/servicios/paisajismo.png"
+              alt="Servicio de Asesoría Inmobiliaria"
+              Width="100%"
+            />
+            <ButtonPrime
+              class="my-4"
+              severity="primary"
+              label="Escríbenos"
+              icon="pi pi-whatsapp"
+              @click="abrirChatWhatsappAsesor('Servicio de Asesoría Inmobiliaria')"
+            />
+          </div>
         </div>
       </div>
     </div>

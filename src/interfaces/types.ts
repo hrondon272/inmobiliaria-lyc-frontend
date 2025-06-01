@@ -4,6 +4,7 @@ export interface CompanyStructure {
     colorSecundario: string;
     colorTerciario: string;
     compania: string;
+    direccion: string;
     email: string;
     nombre: string;
     telefono: string;

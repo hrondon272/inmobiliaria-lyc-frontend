@@ -6,7 +6,7 @@ import {
     sendContactMail
 } from '../services/usuario.service';
 import { useAuthStore } from './auth';
-import type { 
+import type {
     CompanyStructure,
     formPasswordType,
     contactFormType
@@ -20,10 +20,11 @@ export const useUsuarioStore = defineStore('usuario', {
             formData.append("nombre", form.nombre)
             formData.append("email", form.email)
             formData.append("compania", form.compania)
+            formData.append("direccion", form.direccion)
             formData.append("telefono", form.telefono)
             formData.append("redes_sociales", JSON.stringify(form.redes_sociales))
             formData.append("logo", form.logo)
-            
+
             const { status, data } = await updateProfile(formData);
             if (status === 200) {
                 const authStore = useAuthStore();

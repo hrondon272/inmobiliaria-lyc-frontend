@@ -31,7 +31,7 @@ onMounted(async () => {
 const initLeafletMap = () => {
   leafletMap.value = L.map('propertiesMap', {
     center: new L.LatLng(4.733120387754163, -74.08196395655861),
-    zoom: 7
+    zoom: 6
   })
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -65,7 +65,7 @@ const initLeafletMap = () => {
           <a 
             href="https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=me%20interesa%20la%20propiedad%3A%20${item.nombre}"
             style=" background-color: ${companyData?.value?.colorSecundario || '#000'};
-                    color: #FFF;
+                    color: #000;
                     cursor: pointer;
                     padding: 10px;
                     text-decoration: none;
