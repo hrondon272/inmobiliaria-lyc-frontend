@@ -1,7 +1,12 @@
 <template>
   <div class="card">
+    <ButtonPrime
+      icon="pi pi-plus"
+      class="mb-2"
+      @click="registrarInmueble"
+      v-tooltip="'Registrar inmueble'"
+    />
     <DataTable
-      v-model:filters="filters"
       :value="inmuebles"
       paginator
       :rows="rowsPerPage"
@@ -9,11 +14,9 @@
       dataKey="id"
       :loading="isLoading"
       stripedRows
-      removableSort
       @page="updatePage($event)"
       :totalRecords="totalInmuebles"
       paginatorPosition="bottom"
-      filterDisplay="row"
       lazy
     >
       <template #empty> No se encontraron inmuebles. </template>
@@ -64,45 +67,26 @@
         </template>
       </Column>
 
-      <Column
-        v-for="col of columnas"
-        :key="col.field"
-        :field="col.field"
-        :header="col.header"
-        sortable
-        :showClear="true"
-      >
+      <Column v-for="col of columnas" :key="col.field" :field="col.field" :header="col.header">
         <template #body="{ data }">
           <div
             style="max-height: 50px; overflow: hidden; white-space: normal; word-break: break-word"
           >
-            <span v-if="col.field === 'disponible'">
+            <span v-if="col.field === 'disponible'" style="white-space: nowrap">
               {{ data[col.field] === true ? 'Disponible' : 'No disponible' }}
             </span>
-            <span v-else-if="col.field === 'precio'">
-              <p class="text-lg">$ {{ getPrecio(parseFloat(data[col.field] || '0')) }}</p>
+            <span v-else-if="col.field === 'precio'" style="white-space: nowrap">
+              <p class="text-lg" style="white-space: nowrap">
+                $ {{ getPrecio(parseFloat(data[col.field] || '0')) }}
+              </p>
             </span>
-            <span v-else>
+            <span v-else-if="col.field === 'tipoOperacion'">
+              <p class="text-lg">{{ (data[col.field] || '').toUpperCase() }}</p>
+            </span>
+            <span v-else style="white-space: nowrap">
               {{ data[col.field] }}
             </span>
           </div>
-        </template>
-        <template #filter="{ filterModel, filterCallback }">
-          <slot
-            :filterModel="filterModel"
-            :filterCallback="filterCallback"
-            :model="filters"
-            :name="'filter_' + col.field"
-          >
-            <InputText
-              type="search"
-              v-model="filterModel.value"
-              @keydown.enter="filterCallback()"
-              @input="updateFilter(col.field, filterModel.value)"
-              class="p-column-filter p-inputtext-sm py-1"
-              :style="{ ...col.styleAll }"
-            />
-          </slot>
         </template>
       </Column>
       <template #footer> En total hay {{ inmuebles ? totalInmuebles : 0 }} inmuebles. </template>
@@ -111,7 +95,7 @@
       class="w-12 md:w-11 mx-auto"
       v-model:visible="visibleEditInfo"
       modal
-      header="Edite la información del inmueble"
+      :header="isEditing ? 'Edite la información del inmueble' : 'Registre un inmueble'"
     >
       <create-edit-inmueble
         v-model="modeloInfo"
@@ -170,26 +154,12 @@ const inmuebles = computed(() => useInmueble.lista)
 const totalInmuebles = computed(() => useInmueble.totalInmuebles)
 
 const columnas = [
+  { field: 'tipoOperacion', header: 'ALQUILER/VENTA' },
   { field: 'nombre', header: 'Nombre' },
   { field: 'disponible', header: 'Disponible' },
   { field: 'precio', header: 'Precio' },
-  { field: 'ciudad', header: 'Ciudad' },
-  { field: 'tipo', header: 'Tipo de inmueble' },
-  { field: 'autor', header: 'Asesor' }
+  { field: 'ciudad', header: 'Ciudad' }
 ]
-
-const filters = ref({
-  nombre: { value: null },
-  ciudad: { value: null },
-  precio: { value: null },
-  disponible: { value: null },
-  tipo: { value: null },
-  caracteristicas: { value: null },
-  autor: { value: null },
-  cantidadBanos: { value: null },
-  cantidadDormitorios: { value: null },
-  direccion: { value: null }
-})
 
 onMounted(async () => {
   await fetchInmuebles()
@@ -214,6 +184,12 @@ const editarInmueble = async (id) => {
     visibleEditInfo.value = true
     isEditing.value = true
   }
+}
+
+const registrarInmueble = async () => {
+  modeloInfo.value = null
+  visibleEditInfo.value = true
+  isEditing.value = false
 }
 
 const eliminarInmueble = (id) => {
@@ -260,9 +236,5 @@ const updatePage = (event) => {
     page.value = event.page + 1
   }
   fetchInmuebles()
-}
-
-const updateFilter = (field, value) => {
-  filters.value[field].value = value
 }
 </script>
