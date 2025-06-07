@@ -62,6 +62,8 @@ export interface formPasswordType {
     newPassword: string
 }
 
+type tipoOperacion = null | 'alquiler' | 'venta';
+
 export interface contactFormType {
     nombre: string,
     email: string,
@@ -85,10 +87,11 @@ export interface FormInmueble {
         latitud: number,
         longitud: number
     },
+    disponible: false,
+    tipoOperacion: tipoOperacion,
     idTipo: boolean | null,
     idCiudad: boolean | null,
     fotos: FotoInmueble[],
-    disponible: false,
     videos?: VideoInmueble[]
 }
 

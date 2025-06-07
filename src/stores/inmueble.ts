@@ -62,10 +62,11 @@ export const useInmuebleStore = defineStore('mainstore', {
             formData.append('coordenadas[longitud]', form.coordenadas.longitud);
             formData.append("descripcion", form.descripcion)
             formData.append("direccion", form.direccion)
-            formData.append("idCiudad", form.idCiudad)
-            formData.append("idTipo", form.idTipo)
             formData.append("precio", form.precio)
             formData.append("precioNegociable", precioNegociable);
+            formData.append("tipoOperacion", form.tipoOperacion)
+            formData.append("idCiudad", form.idCiudad)
+            formData.append("idTipo", form.idTipo)
 
             form.fotos.forEach((item: any, index: number) => {
                 const esPortada = item.esPortada ? '1' : '0';
