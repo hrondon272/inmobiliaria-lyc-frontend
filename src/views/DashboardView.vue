@@ -3,8 +3,8 @@
     class="formgrid grid w-12 md:w-10 mx-auto p-3 md:p-4"
     :style="{ backgroundColor: companyData?.colorPrimario }"
   >
-    <div class="col-8 sm:col-9 md:col-10"></div>
-    <div class="col-4 sm:col-3 md:col-2">
+    <div class="col-8 sm:col-9 md:col-10" v-if="companyData?.esPro"></div>
+    <div class="col-4 sm:col-3 md:col-2" v-if="companyData?.esPro">
       <div class="flex mb-2 gap-2 justify-end">
         <ButtonPrime
           @click="value = '0'"
@@ -19,7 +19,6 @@
           label="2"
           class="w-8 h-8 p-0"
           :outlined="value !== '1'"
-          v-if="companyData?.esPro"
         />
         <ButtonPrime
           @click="value = '2'"
@@ -27,7 +26,6 @@
           label="3"
           class="w-8 h-8 p-0"
           :outlined="value !== '2'"
-          v-if="companyData?.esPro"
         />
       </div>
     </div>
