@@ -31,32 +31,17 @@
         <div class="col-12 md:col-6">
           <p class="text-xl text-white font-semibold text-center mb-2">Horario de atención</p>
           <p>
-            <span class="font-bold">Lunes: </span>
-            <span>9:00 AM - 6:00 PM</span>
-          </p>
-          <p>
-            <span class="font-bold">Martes: </span>
-            <span>9:00 AM - 6:00 PM</span>
-          </p>
-          <p>
-            <span class="font-bold">Miércoles: </span>
-            <span>9:00 AM - 6:00 PM</span>
-          </p>
-          <p>
-            <span class="font-bold">Jueves: </span>
-            <span>9:00 AM - 6:00 PM</span>
-          </p>
-          <p>
-            <span class="font-bold">Viernes: </span>
-            <span>9:00 AM - 6:00 PM</span>
+            <span class="font-bold">Lunes a viernes: </span>
+            <span style="display: block">8:00 AM - 12:00 PM</span>
+            <span>2:00 PM - 05:30 PM</span>
           </p>
           <p>
             <span class="font-bold">Sábado: </span>
-            <span>10:00 AM - 2:00 PM</span>
+            <span>08:00 AM - 12:00 PM</span>
           </p>
           <p>
             <span class="font-bold">Domingo: </span>
-            <span> No laboramos</span>
+            <span>No laboramos</span>
           </p>
         </div>
       </div>
