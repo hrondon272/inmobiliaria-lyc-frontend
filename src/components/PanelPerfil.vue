@@ -178,7 +178,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import { useToast } from '../plugins/useToast'
@@ -260,12 +260,12 @@ const iconOptions = ref([
 ])
 
 const form = ref({
-  nombre: companyData?.value.nombre,
-  email: companyData?.value.email,
-  compania: companyData?.value.compania,
-  direccion: companyData?.value.direccion,
-  telefono: companyData?.value.telefono,
-  redes_sociales: companyData?.value.redes_sociales,
+  nombre: '',
+  email: '',
+  compania: '',
+  direccion: '',
+  telefono: '',
+  redes_sociales: [],
   logo: null
 })
 
@@ -337,4 +337,16 @@ const changePassword = async () => {
     )
   }
 }
+
+watchEffect(() => {
+  if (companyData.value) {
+    form.value.nombre = companyData?.value.nombre
+    form.value.email = companyData?.value.email
+    form.value.compania = companyData?.value.compania
+    form.value.direccion = companyData?.value.direccion
+    form.value.telefono = companyData?.value.telefono
+    form.value.redes_sociales = companyData?.value.redes_sociales
+    form.value.logo = companyData?.value.urlLogo || null
+  }
+})
 </script>

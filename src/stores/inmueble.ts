@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { Inmueble } from '../interfaces/types'
-import { 
-    registrar, 
+import {
+    registrar,
     listar,
     actualizar,
     eliminar,
@@ -38,17 +38,17 @@ export const useInmuebleStore = defineStore('mainstore', {
         }
     },
     actions: {
-        async fetchInmuebles(filters: object|null = {}, page: number = 1, perPage: number = 10){            
+        async fetchInmuebles(filters: object | null = {}, page: number = 1, perPage: number = 10) {
             const { data, status } = await listar(filters, page, perPage);
 
-            if(status === 200){
+            if (status === 200) {
                 this.inmuebles = data.data;
                 this.total = data.total;
                 this.page = data.page;
             }
             return status;
         },
-        async registrar(form: any){
+        async registrar(form: any) {
             const precioNegociable = form.precioNegociable ? '1' : '0';
 
             const formData = new FormData();
@@ -76,16 +76,16 @@ export const useInmuebleStore = defineStore('mainstore', {
             form.videos.forEach((item: any, index: number) => {
                 formData.append(`videos[${index}]`, item);
             });
-            
+
             const { status } = await registrar(formData);
             return status;
         },
-        async buscar(id: string){
+        async buscar(id: string) {
             return await buscar(id);
         },
-        async actualizar(form: any, id: string){            
+        async actualizar(form: any, id: string) {
             const { status, data } = await actualizar(form, id);
-            if(status === 200){
+            if (status === 200) {
                 const index = this.inmuebles.findIndex(inmueble => inmueble.id === id);
                 if (index !== -1) {
                     this.inmuebles[index] = {
@@ -96,18 +96,18 @@ export const useInmuebleStore = defineStore('mainstore', {
             }
             return status;
         },
-        async eliminar(id: string){  
+        async eliminar(id: string) {
             const { status } = await eliminar(id);
-            if(status === 204){
+            if (status === 204) {
                 this.inmuebles = this.inmuebles.filter(inmueble => inmueble.id !== id);
                 this.total = this.total > 0 ? this.total - 1 : 0;
-            }    
+            }
             return status;
         },
-        async buscarFotos(id: string){
+        async buscarFotos(id: string) {
             return await buscarFotos(id);
         },
-        async agregarFotos(form: any, idInmueble: string){
+        async agregarFotos(form: any, idInmueble: string) {
             const formData = new FormData();
             form.fotos.forEach((item: any, index: number) => {
                 const esPortada = item.esPortada ? '1' : '0';
@@ -116,7 +116,7 @@ export const useInmuebleStore = defineStore('mainstore', {
             });
             const response = await agregarFotos(formData, idInmueble);
 
-            if(response.status === 200){
+            if (response.status === 200) {
                 const index = this.inmuebles.findIndex(inmueble => inmueble.id === idInmueble);
                 const fotoNuevaPortada = response.data.data.find((foto: any) => foto.esPortada);
                 if (index !== -1 && fotoNuevaPortada) {
@@ -132,13 +132,13 @@ export const useInmuebleStore = defineStore('mainstore', {
             }
             return response;
         },
-        async eliminarFoto(id: string){            
+        async eliminarFoto(id: string) {
             return await eliminarFoto(id);
         },
-        async buscarVideos(id: string){
+        async buscarVideos(id: string) {
             return await buscarVideos(id);
         },
-        async agregarVideos(form: any, idInmueble: string){
+        async agregarVideos(form: any, idInmueble: string) {
             const formData = new FormData();
             form.videos.forEach((item: any, index: number) => {
                 formData.append(`videos[${index}]`, item);
@@ -146,7 +146,7 @@ export const useInmuebleStore = defineStore('mainstore', {
             const response = await agregarVideos(formData, idInmueble);
             const { data: videoNuevo, status } = response;
 
-            if(status === 200){
+            if (status === 200) {
                 const index = this.inmuebles.findIndex(inmueble => inmueble.id === idInmueble);
                 if (index !== -1) {
                     this.inmuebles[index]?.videos?.push({
@@ -158,7 +158,7 @@ export const useInmuebleStore = defineStore('mainstore', {
             }
             return response;
         },
-        async eliminarVideo(id: string){            
+        async eliminarVideo(id: string) {
             return await eliminarVideo(id);
         },
     }

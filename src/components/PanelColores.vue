@@ -48,7 +48,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import { useToast } from '../plugins/useToast'
@@ -64,9 +64,9 @@ const useStore = useUsuarioStore()
 const companyData = computed(() => authStore.getCompanyData)
 
 const form = ref({
-  colorPrimario: companyData?.value.colorPrimario,
-  colorSecundario: companyData?.value.colorSecundario,
-  colorTerciario: companyData?.value.colorTerciario
+  colorPrimario: '',
+  colorSecundario: '',
+  colorTerciario: ''
 })
 
 const rules = {
@@ -120,4 +120,12 @@ const onSubmit = async () => {
     )
   }
 }
+
+watchEffect(() => {
+  if (companyData.value) {
+    form.value.colorPrimario = companyData.value.colorPrimario
+    form.value.colorSecundario = companyData.value.colorSecundario
+    form.value.colorTerciario = companyData.value.colorTerciario
+  }
+})
 </script>
