@@ -13,10 +13,10 @@
     <div
       v-if="!visibleError404"
       class="w-12 md:w-10 mx-auto p-2"
-      :style="{ backgroundColor: companyData?.colorTerciario }"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
     >
       <not-found-404 v-if="visibleError404" />
-      <div v-else class="text-2xl font-light text-center">
+      <div v-else class="text-2xl font-bold text-center">
         <h2>$ {{ getPrecio(parseFloat(inmueble?.precio || '0')) }} COP</h2>
       </div>
     </div>
@@ -40,20 +40,14 @@
           >
             <template #item="slotProps">
               <div class="image-container" @click="mostrarFotos = true">
-                <img
-                  :src="resolveURLFiles(slotProps.item.urlFoto)"
-                  style="width: 100% !important; display: block"
-                />
+                <img :src="slotProps.item.urlFoto" style="width: 100% !important; display: block" />
                 <div class="hover-overlay">
                   <i class="pi pi-search"></i>
                 </div>
               </div>
             </template>
             <template #thumbnail="slotProps">
-              <img
-                :src="resolveURLFiles(slotProps.item.urlFoto)"
-                style="display: block; width: 50px"
-              />
+              <img :src="slotProps.item.urlFoto" style="display: block; width: 50px" />
             </template>
           </Galleria>
           <Galleria
@@ -71,7 +65,7 @@
                 <video
                   controls
                   preload="auto"
-                  :src="resolveURLFiles(slotProps.item.urlVideo)"
+                  :src="slotProps.item.urlVideo"
                   class="media-preview"
                 ></video>
                 <div class="hover-overlay">
@@ -135,16 +129,10 @@
           :fullScreen="true"
         >
           <template #item="slotProps">
-            <img
-              :src="resolveURLFiles(slotProps.item.urlFoto)"
-              style="width: 100% !important; display: block"
-            />
+            <img :src="slotProps.item.urlFoto" style="width: 100% !important; display: block" />
           </template>
           <template #thumbnail="slotProps">
-            <img
-              :src="resolveURLFiles(slotProps.item.urlFoto)"
-              style="display: block; width: 50px"
-            />
+            <img :src="slotProps.item.urlFoto" style="display: block; width: 50px" />
           </template>
         </Galleria>
         <Galleria
@@ -163,7 +151,7 @@
             <video
               controls
               preload="auto"
-              :src="resolveURLFiles(slotProps.item.urlVideo)"
+              :src="slotProps.item.urlVideo"
               class="media-preview"
             ></video>
           </template>
@@ -180,7 +168,7 @@ import { useLoaderStore } from '@/stores/loader'
 import type { Inmueble } from '../interfaces/types'
 import NotFound404 from '@/components/NotFound404.vue'
 import { useRoute } from 'vue-router'
-import { getPrecio, resolveURLFiles } from '@/helpers/randomFunctions'
+import { getPrecio } from '@/helpers/randomFunctions'
 import IconBed from '@/components/icons/IconBed.vue'
 import IconBath from '@/components/icons/IconBath.vue'
 import IconArea from '@/components/icons/IconArea.vue'

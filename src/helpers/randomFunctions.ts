@@ -1,4 +1,4 @@
-import type{ Inmueble } from '@/interfaces/types'
+import type { Inmueble } from '@/interfaces/types'
 
 const resolveURLFiles = (urlFile: string) => {
     return `${import.meta.env.VITE_ASSET_URL}/${urlFile}`;
@@ -7,14 +7,14 @@ const resolveURLFiles = (urlFile: string) => {
 const getFotoPrincipal = (inmueble: Inmueble) => {
     if (!inmueble?.fotos?.length) return null;
     const portada = inmueble.fotos.find(foto => foto.esPortada) ?? inmueble.fotos[0];
-    return resolveURLFiles(portada.urlFoto);
+    return portada.urlFoto;
 };
 
 const getPrecio = (precio: number) => {
-  return precio.toLocaleString('es-CL',
-      {
-          maximumFractionDigits: 0
-      });
+    return precio.toLocaleString('es-CL',
+        {
+            maximumFractionDigits: 0
+        });
 }
 
 export {

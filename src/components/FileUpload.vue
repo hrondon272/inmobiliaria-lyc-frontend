@@ -204,7 +204,7 @@ const verificarVideo = async (file: File) => {
     }
   })
 
-  if (typeof duracion === 'number' && duracion <= 61 && file.size <= 104857600) return true
+  if (typeof duracion === 'number' && duracion <= 61 && file.size <= 209715200) return true
   else return false
 }
 

@@ -1,41 +1,49 @@
 <template>
-  <div class="w-12 md:w-10 mx-auto p-3 md:p-4" :style="{ backgroundColor: companyData?.colorPrimario }">
+  <div
+    class="w-12 md:w-10 mx-auto p-3 md:p-4"
+    :style="{ backgroundColor: companyData?.colorPrimario }"
+  >
     <div class="formgrid grid">
-      <div v-for="(video) in listaVideos" :key="video.id" class="field col-12 md:col-6 lg:col-4 mt-2">
+      <div v-for="video in listaVideos" :key="video.id" class="field col-12 md:col-6 lg:col-4 mt-2">
         <Card>
           <template #content>
             <div class="relative">
-              <video controls preload="auto" :src="urlVideoInmueble(video.urlVideo)" class="media-preview"></video>
-              <ButtonPrime icon="pi pi-times" class="p-button-rounded p-button-danger delete-button"
-                @click="eliminarVideoInmueble(video.id)" />
+              <video controls preload="auto" :src="video.urlVideo" class="media-preview"></video>
+              <ButtonPrime
+                icon="pi pi-times"
+                class="p-button-rounded p-button-danger delete-button"
+                @click="eliminarVideoInmueble(video.id)"
+              />
             </div>
           </template>
         </Card>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="formgrid grid mt-4">
-      <file-upload @update:listaVideos="actualizarListaVideos" ref="fileSelector" :isEditVideos="true" />
+      <file-upload
+        @update:listaVideos="actualizarListaVideos"
+        ref="fileSelector"
+        :isEditVideos="true"
+      />
     </div>
     <div class="col-12 text-center mt-4">
-      <ButtonPrime icon="pi pi-save" :aria-label="'Agregar videos'" :label="'Agregar videos'" @click="onSubmit" />
+      <ButtonPrime
+        icon="pi pi-save"
+        :aria-label="'Agregar videos'"
+        :label="'Agregar videos'"
+        @click="onSubmit"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  ref,
-  watch,
-  computed
-} from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useInmuebleStore } from '@/stores/inmueble'
 import { useToast } from '../plugins/useToast'
 import { useLoaderStore } from '@/stores/loader'
-import type {
-  FormVideosInmueble,
-  VideoInmueble
-} from '@/interfaces/types'
+import type { FormVideosInmueble, VideoInmueble } from '@/interfaces/types'
 import { useConfirm } from '@/plugins/useConfirm'
 import FileUpload from './FileUpload.vue'
 import { resolveURLFiles } from '@/helpers/randomFunctions'
@@ -47,30 +55,30 @@ const props = defineProps({
     type: String,
     default: ''
   }
-});
+})
 
-const authStore = useAuthStore();
-const useInmueble = useInmuebleStore();
-const loaderStore = useLoaderStore();
-const { showConfirmDelete } = useConfirm();
-const { showMessage } = useToast();
+const authStore = useAuthStore()
+const useInmueble = useInmuebleStore()
+const loaderStore = useLoaderStore()
+const { showConfirmDelete } = useConfirm()
+const { showMessage } = useToast()
 
-const fileSelector = ref();
+const fileSelector = ref()
 
 const listaVideos = ref<FormVideosInmueble>([])
 
 const form = ref({
   videos: [] as VideoInmueble[]
-});
+})
 
-const companyData = computed(() => authStore.getCompanyData);
+const companyData = computed(() => authStore.getCompanyData)
 
 const onSubmit = async () => {
-  const totalVideos = form.value.videos.length + listaVideos.value.length;
+  const totalVideos = form.value.videos.length + listaVideos.value.length
   if (totalVideos > 3) {
-    showMessage('warn', 'Error', 'Cada inmueble solo puede tener hasta 3 videos', 10000);
+    showMessage('warn', 'Error', 'Cada inmueble solo puede tener hasta 3 videos', 10000)
     limpiarFormulario()
-    return;
+    return
   }
 
   await loaderStore?.setLoading(true)
@@ -80,26 +88,31 @@ const onSubmit = async () => {
 
   if (status === 200) {
     data.data.forEach((nuevoVideo: any) => {
-      const { id, urlVideo } = nuevoVideo;
-      listaVideos.value.push({ id, idInmueble: props.idInmueble, urlVideo });
-    });
-    showMessage('success', 'Éxito', 'Videos añadidos exitosamente', 6000);
+      const { id, urlVideo } = nuevoVideo
+      listaVideos.value.push({ id, idInmueble: props.idInmueble, urlVideo })
+    })
+    showMessage('success', 'Éxito', 'Videos añadidos exitosamente', 6000)
     limpiarFormulario()
   } else {
-    showMessage('error', 'Error', 'Por favor vuelva a intentar o comuníquese con nuestro equipo', 10000);
+    showMessage(
+      'error',
+      'Error',
+      'Por favor vuelva a intentar o comuníquese con nuestro equipo',
+      10000
+    )
   }
-};
+}
 
 const limpiarFormulario = () => {
-  form.value.videos = [];
-  if (fileSelector.value) fileSelector.value.resetFiles();
+  form.value.videos = []
+  if (fileSelector.value) fileSelector.value.resetFiles()
 }
 
 const actualizarListaVideos = (videos: VideoInmueble[]) => {
-  form.value.videos = [];
-  
+  form.value.videos = []
+
   videos.forEach((video: VideoInmueble) => {
-    form.value.videos.push(video);
+    form.value.videos.push(video)
   })
 }
 
@@ -110,23 +123,26 @@ const eliminarVideoInmueble = (id: string) => {
     await loaderStore?.setLoading(false)
 
     if (status === 204) {
-      listaVideos.value = listaVideos.value.filter(video => video.id !== id);
-      showMessage('success', 'Éxito', 'Video eliminado exitosamente', 6000);
+      listaVideos.value = listaVideos.value.filter((video) => video.id !== id)
+      showMessage('success', 'Éxito', 'Video eliminado exitosamente', 6000)
     } else {
-      showMessage('error', 'Error', 'Por favor vuelva a intentar o comuníquese con nuestro equipo', 10000);
+      showMessage(
+        'error',
+        'Error',
+        'Por favor vuelva a intentar o comuníquese con nuestro equipo',
+        10000
+      )
     }
   })
-};
-
-const urlVideoInmueble = (urlVideo: string) => {
-  return resolveURLFiles(urlVideo);
 }
 
-watch(() => props.modelValue, (newValue: any) => {
-  listaVideos.value = newValue
-},
+watch(
+  () => props.modelValue,
+  (newValue: any) => {
+    listaVideos.value = newValue
+  },
   { immediate: true }
-);
+)
 </script>
 
 <style scoped>

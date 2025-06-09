@@ -68,14 +68,19 @@ export const useInmuebleStore = defineStore('mainstore', {
             formData.append("idCiudad", form.idCiudad)
             formData.append("idTipo", form.idTipo)
 
+
             form.fotos.forEach((item: any, index: number) => {
-                const esPortada = item.esPortada ? '1' : '0';
-                formData.append(`fotos[${index}][foto]`, item.foto);
-                formData.append(`fotos[${index}][esPortada]`, esPortada);
+                if (item.foto instanceof File) {
+                    const esPortada = item.esPortada ? '1' : '0';
+                    formData.append(`fotos[${index}][foto]`, item.foto);
+                    formData.append(`fotos[${index}][esPortada]`, esPortada);
+                }
             });
 
             form.videos.forEach((item: any, index: number) => {
-                formData.append(`videos[${index}]`, item);
+                if (item instanceof File) {
+                    formData.append(`videos[${index}]`, item);
+                }
             });
 
             const { status } = await registrar(formData);
@@ -85,6 +90,9 @@ export const useInmuebleStore = defineStore('mainstore', {
             return await buscar(id);
         },
         async actualizar(form: any, id: string) {
+            form.fotos = form.fotos.filter((item: { foto: File }) => item.foto instanceof File);
+            form.videos = form.videos.filter((item: { foto: File }) => item instanceof File);
+
             const { status, data } = await actualizar(form, id);
             if (status === 200) {
                 const index = this.inmuebles.findIndex(inmueble => inmueble.id === id);
