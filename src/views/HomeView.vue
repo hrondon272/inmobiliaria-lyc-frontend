@@ -1,5 +1,19 @@
 <template>
-  <div class="card bg-white">
+  <div class="card bg-white relative" style="z-index: 1; margin-top: -72px">
+    <div class="absolute p-4 z-5" style="top: 22rem; left: 0; right: 0; margin: 0 auto">
+      <div class="mx-auto text-center">
+        <ButtonPrime
+          v-for="type in companyData?.tipos_inmuebles || []"
+          :key="type.id"
+          variant="outlined"
+          @click="goToRoute(type.id)"
+          :label="type.descripcion"
+          :icon="type.icono + ' text-4xl'"
+          class="m-1 text-xs text-red-500 border-red-500 bg-white"
+          iconPos="top"
+        />
+      </div>
+    </div>
     <Carousel
       :value="imagenesCarrusel"
       :numVisible="1"
@@ -15,27 +29,35 @@
       aria-live="off"
     >
       <template #item="slotProps">
-        <div class="border rounded p-0">
-          <div class="mb-4">
-            <div class="relative">
-              <img
-                :src="'/carrusel/' + slotProps.data.image"
-                :alt="slotProps.data.name"
-                class="w-full h-30rem"
-                style="object-fit: cover"
-              />
-            </div>
-          </div>
+        <div class="rounded p-0 relative z-1">
+          <img
+            :src="'/carrusel/' + slotProps.data.image"
+            :alt="slotProps.data.name"
+            class="w-full z-1 image-carrusel"
+            style="object-fit: cover"
+          />
         </div>
       </template>
     </Carousel>
     <div class="w-12 md:w-10 mx-auto">
       <div>
+        <div class="text-center my-4 font-bold uppercase text-5xl py-4 h-10rem">
+          RESPONSABILIDAD, COMPROMISO, CONFIANZA
+          <i class="pi pi-check-circle text-6xl ml-2"></i>
+        </div>
+        <div class="text-center my-4 font-bold uppercase text-2xl">
+          UBICACIÓN
+          <i class="pi pi-map-marker text-2xl"></i>
+        </div>
+        <div class="text-center">
+          <video src="/ubicacion.mp4" class="h-30rem" autoplay controls></video>
+        </div>
         <div
-          class="py-2 px-4 mt-2 text-2xl text-white"
+          class="py-2 px-4 mt-6 text-3xl font-bold text-center"
           :style="{ backgroundColor: companyData?.colorPrimario }"
         >
           ¡ENCUENTRA AQUÍ EL INMUEBLE DE TUS SUEÑOS!
+          <i class="pi pi-search text-4xl ml-2"></i>
         </div>
         <div class="formgrid grid w-full p-4">
           <div class="field col-12 sm:col-6 xl:col-4">
@@ -148,10 +170,11 @@
       </div>
       <div class="mb-3">
         <div
-          class="py-2 px-4 mt-2 text-xl text-white"
+          class="py-2 px-4 mt-2 text-3xl font-bold text-center"
           :style="{ backgroundColor: companyData?.colorPrimario }"
         >
           LISTA DESTACADOS
+          <i class="pi pi-list-check text-4xl ml-2"></i>
         </div>
       </div>
       <div class="grid gap-2 my-4 px-2">
@@ -217,22 +240,23 @@
         :style="{
           backgroundColor: companyData?.colorPrimario,
           backgroundImage: `url('${imagenFrase3}')`,
-          filter: 'brightness(60%)',
+          filter: 'brightness(40%)',
           backgroundSize: 'cover'
         }"
       ></div>
 
-      <!-- Texto encima del fondo -->
-      <span
-        class="relative vertical-align-middle text-white text-center font-bold uppercase text-2xl py-4"
-      >
-        RESPONSABILIDAD, COMPROMISO, CONFIANZA
+      <span class="relative text-white text-center font-bold uppercase text-4xl py-2 text-center"
+        >¿Por qué hacerlo con nosotros?
+        <i class="pi pi-question-circle text-5xl ml-2"></i>
       </span>
-      <span
-        class="relative vertical-align-middle text-white text-center font-bold uppercase text-2xl py-4"
-      >
-        ¿Por qué hacerlo con nosotros? Porque ahorramos tu tiempo, evitamos filas y desplazamientos,
-        y garantizamos un trámite ágil, confiable y 100% legal.
+      <span class="relative text-white text-center text-2xl">
+        Porque tu tranquilidad es nuestra prioridad. En Inmobiliaria Aguirre L&C entendemos que
+        gestionar una propiedad no solo implica números, contratos y trámites; también implica
+        tiempo, confianza y decisiones importantes. Nos encargamos de todo el proceso con
+        profesionalismo, cercanía y compromiso, para que tú te enfoques en lo que realmente importa.
+        Olvídate de las preocupaciones: te ayudamos a rentabilizar tu propiedad sin complicaciones,
+        con procesos claros, seguros y 100% legales. Gestionamos con responsabilidad, trabajamos con
+        el corazón.
       </span>
     </div>
   </div>
@@ -276,18 +300,6 @@ const imagenesCarrusel = ref([
   {
     name: 'Imagen 2',
     image: 'carrusel-imagen-2.png'
-  },
-  {
-    name: 'Imagen 3',
-    image: 'carrusel-imagen-3.png'
-  },
-  {
-    name: 'Imagen 4',
-    image: 'carrusel-imagen-4.png'
-  },
-  {
-    name: 'Imagen 5',
-    image: 'carrusel-imagen-5.png'
   }
 ])
 
@@ -331,6 +343,10 @@ const responsiveOptions = ref([
     numScroll: 1
   }
 ])
+
+function goToRoute(id: string) {
+  router.push({ name: 'listadoInmuebles', query: { tipoSeleccionado: id } })
+}
 </script>
 
 <style scoped>
@@ -356,5 +372,15 @@ const responsiveOptions = ref([
   font-size: 14px;
   line-height: 18px;
   text-align: right;
+}
+</style>
+<style>
+.image-carrusel {
+  height: 40rem;
+}
+@media (max-width: 960px) {
+  .image-carrusel {
+    height: 20rem;
+  }
 }
 </style>

@@ -1,20 +1,16 @@
 <template>
-  <div class="card bg-white text-white">
-    <div
-      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
-      :style="{ backgroundColor: companyData?.colorSecundario }"
-    >
+  <div class="card">
+    <div class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4">
       MISIÓN Y VISIÓN
     </div>
-    <div class="w-12 md:w-10 mx-auto" :style="{ backgroundColor: companyData?.colorPrimario }">
-      <div class="grid mx-auto p-4">
-        <div class="col-12 md:col-6">
-          <div class="text-center servicio">
-            <img src="/servicios/asesoria-tributaria.png" alt="Misión y visión" Width="100%" />
-          </div>
-        </div>
-        <div class="col-12 md:col-6">
-          <h2 class="font-bold">Misión</h2>
+    <div
+      class="w-12 md:w-10 mx-auto text-center"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
+    >
+      <div class="grid mx-auto p-4 md:gap-3">
+        <div class="col-12 lg:col-5 mx-auto">
+          <img src="/mision.png" alt="Misión LYC" class="w-12 lg:w-7 mx-auto border-circle" />
+          <h2 class="font-bold text-4xl">Misión</h2>
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre, nuestra misión es brindar soluciones inmobiliarias confiables,
             transparentes y responsables, que respondan a las necesidades reales de la comunidad de
@@ -24,7 +20,17 @@
             mercado inmobiliario sólido y profesional, donde cada cliente se sienta acompañado,
             informado y seguro al tomar decisiones sobre su patrimonio.
           </p>
-          <h2 class="mt-4 font-bold">Visión</h2>
+          <ButtonPrime
+            class="my-4"
+            severity="primary"
+            label="Escríbenos"
+            icon="pi pi-whatsapp"
+            @click="abrirChatWhatsappAsesor"
+          />
+        </div>
+        <div class="col-12 lg:col-5 mx-auto">
+          <img src="/vision.jpg" alt="Visión LYC" class="w-12 lg:w-7 mx-auto border-circle" />
+          <h2 class="font-bold text-4xl">Visión</h2>
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre L y C nos proyectamos como una empresa en constante crecimiento,
             con el objetivo de ampliar nuestra presencia en nuevos territorios y consolidarnos como

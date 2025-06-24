@@ -1,15 +1,12 @@
 <template>
-  <div class="card bg-white text-white">
-    <div
-      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
-      :style="{ backgroundColor: companyData?.colorSecundario }"
-    >
+  <div class="card">
+    <div class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4">
       NUESTROS SERVICIOS
     </div>
     <div class="w-12 md:w-10 mx-auto" :style="{ backgroundColor: companyData?.colorPrimario }">
       <div class="grid mx-auto p-4">
         <div class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Admnistracion de Inmuebles</h2>
+          <h2 id="avaluoComercial" class="text-3xl font-bold">Admnistracion de Inmuebles</h2>
           <hr />
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre, facilitamos el proceso de arrendar propiedades con un enfoque
@@ -37,7 +34,7 @@
           </div>
         </div>
         <div v-if="isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Servicio de arrendamiento</h2>
+          <h2 id="avaluoComercial" class="text-3xl font-bold">Servicio de arrendamiento</h2>
           <hr />
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre, te brindamos una solución integral para el arrendamiento de
@@ -89,7 +86,7 @@
           </div>
         </div>
         <div v-if="!isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Servicio de arrendamiento</h2>
+          <h2 id="avaluoComercial" class="text-3xl font-bold">Servicio de arrendamiento</h2>
           <hr />
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre, te brindamos una solución integral para el arrendamiento de
@@ -109,7 +106,7 @@
           </p>
         </div>
         <div class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Venta de inmuebles</h2>
+          <h2 id="avaluoComercial" class="text-3xl font-bold">Venta de inmuebles</h2>
           <hr />
           <p class="text-justify mt-4">
             En Inmobiliaria Aguirre, ofrecemos un servicio de corretaje de inmuebles eficiente y
@@ -159,7 +156,7 @@
           </div>
         </div>
         <div v-if="isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">
+          <h2 id="avaluoComercial" class="text-3xl font-bold">
             Servicio de Corretaje para Captación de Inquilinos
           </h2>
           <hr />
@@ -221,7 +218,7 @@
           </div>
         </div>
         <div v-if="!isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">
+          <h2 id="avaluoComercial" class="text-3xl font-bold">
             Servicio de Corretaje para Captación de Inquilinos
           </h2>
           <hr />
@@ -251,7 +248,7 @@
           </p>
         </div>
         <div class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">Servicio de Asesoría Inmobiliaria</h2>
+          <h2 id="avaluoComercial" class="text-3xl font-bold">Servicio de Asesoría Inmobiliaria</h2>
           <hr />
           <p class="text-justify mt-4">
             En INMOBILIARIA AGUIRRE L Y C ofrecemos un servicio integral de asesoría inmobiliaria,
@@ -310,7 +307,7 @@
           </div>
         </div>
         <div v-if="!isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">
+          <h2 id="avaluoComercial" class="text-3xl font-bold">
             Servicio de Trámite de Certificados de Libertad y Tradición
           </h2>
           <hr />
@@ -332,7 +329,7 @@
           </p>
         </div>
         <div v-if="isMobile" class="col-12 md:col-8">
-          <h2 id="avaluoComercial" class="text-white">
+          <h2 id="avaluoComercial" class="text-3xl font-bold">
             Servicio de Trámite de Certificados de Libertad y Tradición
           </h2>
           <hr />

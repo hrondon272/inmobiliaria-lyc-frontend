@@ -1,9 +1,9 @@
 <template>
   <header
     class="p-1 text-white"
-    :style="{ backgroundColor: companyData?.colorPrimario, zIndex: 2, position: 'relative' }"
+    :style="{ backgroundColor: 'transparent', zIndex: 2, position: 'relative' }"
   >
-    <div class="w-10 m-auto">
+    <div class="w-12 m-auto p-2">
       <div class="grid pt-2 pb-0">
         <div class="col-12 md:col-12 flex justify-content-center md:justify-content-end gap-1">
           <div v-for="(item, index) in companyData?.redes_sociales" :key="index">
@@ -33,45 +33,6 @@
           />
         </div>
       </div>
-      <Divider class="mt-2" />
-      <MenuBar
-        :model="items"
-        class="flex justify-content-between align-items-center border-none"
-        :style="{ backgroundColor: companyData?.colorSecundario }"
-      >
-        <template #start>
-          <div class="flex align-items-center">
-            <a v-if="urlLogo" href="/">
-              <img :src="urlLogo" alt="Logo" height="50" />
-            </a>
-          </div>
-        </template>
-
-        <template #item="{ item, props, hasSubmenu }">
-          <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-            <a
-              class="text-black-alpha-90 font-semibold"
-              :href="href"
-              v-bind="props.action"
-              @click="navigate"
-            >
-              <span :class="item.icon" />
-              <span class="ml-2">{{ item.label }}</span>
-            </a>
-          </router-link>
-          <a
-            class="text-black-alpha-90 font-semibold"
-            v-else
-            :href="item.url"
-            :target="item.target"
-            v-bind="props.action"
-          >
-            <span :class="item.icon" />
-            <span class="ml-2">{{ item.label }}</span>
-            <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down ml-2" />
-          </a>
-        </template>
-      </MenuBar>
     </div>
     <ButtonPrime
       icon="pi pi-whatsapp text-4xl p-2"
@@ -87,18 +48,17 @@
       @click="abrirChatWhatsapp"
     />
   </header>
+  <MainMenu />
   <AuthDialog v-model:visible="visible" />
-  <hr />
 </template>
 
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
-import { onMounted, computed, ref, watch } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import AuthDialog from '../AuthDialog.vue'
 import { useLoaderStore } from '@/stores/loader'
-import { resolveURLFiles } from '@/helpers/randomFunctions'
 import { useConfirm } from '@/plugins/useConfirm'
-import type { CompanyStructure, menuItem } from '@/interfaces/types'
+import MainMenu from '../MainMenu.vue'
 
 const authStore = useAuthStore()
 const loaderStore = useLoaderStore()
@@ -106,27 +66,12 @@ const { showConfirmDefault } = useConfirm()
 
 const companyData = computed(() => authStore.getCompanyData)
 
-const urlLogo = computed(() => {
-  return companyData.value && companyData.value.urlLogo
-    ? resolveURLFiles(companyData.value.urlLogo)
-    : ''
-})
-
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const iconLogin = computed(() => {
   return isAuthenticated.value ? 'pi pi-sign-out' : 'pi pi-sign-in'
 })
 
 const visible = ref(false)
-const items = ref<menuItem[]>([])
-
-watch(
-  () => companyData.value,
-  (newVal) => {
-    if (newVal) items.value = buildMenu(newVal)
-  },
-  { immediate: true }
-)
 
 onMounted(() => {
   authStore.init()
@@ -134,32 +79,6 @@ onMounted(() => {
     authStore.fetchCompany()
   }
 })
-
-const buildMenu = (company: CompanyStructure): menuItem[] => {
-  const baseItems: menuItem[] = [
-    { label: 'Inicio', icon: 'pi pi-home', route: '/' },
-    { label: 'Ubica tu inmueble', icon: 'pi pi-map-marker', route: '/ubica-tu-inmueble' },
-    { label: 'Servicios', icon: 'pi pi-briefcase', route: '/servicios' },
-    {
-      label: 'Nosotros',
-      icon: 'pi pi-id-card',
-      items: [
-        { label: '¿Quiénes somos?', icon: 'pi pi-users', route: '/quienes-somos' },
-        { label: 'Misión y Visión', icon: 'pi pi-bullseye', route: '/mision-vision' }
-      ]
-    },
-    { label: 'Contacto', icon: 'pi pi-envelope', route: '/contacto' }
-  ]
-
-  if (company.esPro) {
-    baseItems.push({
-      label: 'Publica tu inmueble',
-      icon: 'pi pi-warehouse',
-      route: '/publica-tu-inmueble'
-    })
-  }
-  return baseItems
-}
 
 const actionLoginButton = async () => {
   if (isAuthenticated.value) {

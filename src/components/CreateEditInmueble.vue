@@ -313,7 +313,7 @@ const rules = {
   descripcion: { required },
   precio: {
     required,
-    minValue: minValue(1)
+    minValue: minValue(0)
   },
   coordenadas: {
     required,

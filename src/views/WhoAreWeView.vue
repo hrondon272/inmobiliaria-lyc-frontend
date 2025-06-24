@@ -1,8 +1,8 @@
 <template>
-  <div class="card text-white" :style="{ backgroundColor: companyData?.colorTerciario }">
+  <div class="card" :style="{ backgroundColor: companyData?.colorPrimario }">
     <div
-      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
-      :style="{ backgroundColor: companyData?.colorSecundario }"
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
     >
       QUIENES SOMOS
     </div>
@@ -10,11 +10,7 @@
       <div class="grid mx-auto p-4">
         <div class="col-12 md:col-6">
           <div class="text-center servicio">
-            <img
-              src="/servicios/avaluo-comercial.png"
-              alt="Avalúo comercial y corporativo"
-              Width="100%"
-            />
+            <img src="/quienes-somos.png" alt="Quienes somos" Width="80%" />
           </div>
         </div>
         <div class="col-12 md:col-6">

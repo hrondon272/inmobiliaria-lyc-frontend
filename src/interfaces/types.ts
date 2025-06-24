@@ -12,9 +12,15 @@ export interface CompanyStructure {
         [key: string]: SocialNetwork
     }
     ciudades: string[];
-    tipos_inmuebles: string[];
+    tipos_inmuebles: tipoInmueble[];
     logo: File;
     esPro: boolean;
+}
+
+export interface tipoInmueble {
+    id: string;
+    descripcion: string;
+    icono: string;
 }
 
 export interface SocialNetwork {

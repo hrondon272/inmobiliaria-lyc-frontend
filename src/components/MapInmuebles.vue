@@ -59,13 +59,13 @@ const initLeafletMap = () => {
             <img src="${getFotoPrincipal(item)}" alt="Inmuebles" width="100" height="100" >
           </a>
           <p id="nombreInmueble">${item.nombre}</p>
-          <div style="background-color: ${companyData?.value?.colorPrimario || '#000'}; color: #FFF; margin-bottom: 25px;">
+          <div style="background-color: ${companyData?.value?.colorTerciario || '#000'}; color: #000;">
             <p id="precioInmueble">${getPrecio(parseFloat(item.precio) || 0)}</p>
           </div>
           <a 
             href="https://api.whatsapp.com/send?phone=${companyData?.value?.telefono}&text=me%20interesa%20la%20propiedad%3A%20${item.nombre}"
-            style=" background-color: ${companyData?.value?.colorSecundario || '#000'};
-                    color: #000;
+            style=" background-color: #4fbd78 !important;
+                    color: #FFF;
                     cursor: pointer;
                     padding: 10px;
                     text-decoration: none;
@@ -85,6 +85,6 @@ const initLeafletMap = () => {
 #propertiesMap {
   width: 100%;
   height: 600px;
-  z-index: 1;
+  z-index: 0;
 }
 </style>

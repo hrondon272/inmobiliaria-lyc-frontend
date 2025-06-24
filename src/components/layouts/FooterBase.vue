@@ -2,7 +2,7 @@
   <hr />
   <div
     class="card flex justify-center text-white"
-    :style="{ backgroundColor: companyData?.colorPrimario }"
+    :style="{ backgroundColor: companyData?.colorSecundario }"
   >
     <footer class="mt-3 bg-gray-900 w-full text-center py-3">
       <div class="grid mx-auto p-4">
