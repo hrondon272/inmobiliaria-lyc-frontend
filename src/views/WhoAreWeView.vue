@@ -13,7 +13,7 @@
             <img src="/quienes-somos.png" alt="Quienes somos" Width="80%" />
           </div>
         </div>
-        <div class="col-12 md:col-6">
+        <div class="col-12 md:col-6" :style="{ color: '#2c3e50' }">
           <h2 class="text-2xl font-bold">Historia de Inmobiliaria Aguirre</h2>
           <p class="text-justify mt-4">
             El 21 de julio de 2021, en el municipio de Segovia, Antioquia, nació Inmobiliaria

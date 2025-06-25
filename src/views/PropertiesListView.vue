@@ -34,7 +34,8 @@
             <Card
               :style="{
                 backgroundColor: companyData?.colorTerciario,
-                boxShadow: '0px 5px 15px ' + companyData?.colorSecundario
+                boxShadow: '0px 5px 15px ' + companyData?.colorSecundario,
+                color: '#2c3e50'
               }"
             >
               <template #content>

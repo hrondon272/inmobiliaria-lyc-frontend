@@ -8,7 +8,13 @@
         <Card>
           <template #content>
             <div class="relative">
-              <video controls preload="auto" :src="video.urlVideo" class="media-preview"></video>
+              <video
+                playsinline
+                controls
+                preload="auto"
+                :src="video.urlVideo"
+                class="media-preview"
+              ></video>
               <ButtonPrime
                 icon="pi pi-times"
                 class="p-button-rounded p-button-danger delete-button"

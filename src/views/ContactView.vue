@@ -1,6 +1,9 @@
 <template>
   <div class="card">
-    <div class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4">
+    <div
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
+    >
       CONTÁCTANOS
     </div>
     <div

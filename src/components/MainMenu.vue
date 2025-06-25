@@ -107,7 +107,10 @@ watch(
 </script>
 
 <style>
-@media (min-width: 960px) {
+@media (max-width: 960px) {
+  .p-menubar-mobile .p-menubar-submenu {
+    background-color: white !important;
+  }
   .p-menubar-submenu .p-menubar-item-link {
     background-color: white !important;
     border: none !important;
@@ -129,7 +132,7 @@ watch(
 
 .p-menubar-item-link.active-menu {
   border-radius: 6px !important;
-  background-color: rgba(88, 88, 88, 0.623) !important;
+  background-color: rgba(185, 184, 184, 0.623) !important;
   color: rgb(255, 255, 255) !important;
   font-weight: bold !important;
 }
@@ -141,7 +144,7 @@ svg {
 }
 
 .custom-bg {
-  background-image: url('/public/carrusel/carrusel-imagen-2.png');
+  background-image: url('/carrusel/carrusel-imagen-2.png');
   background-size: 100% 100%;
   background-position: center;
   background-attachment: fixed;

@@ -1,9 +1,15 @@
 <template>
   <div class="card">
-    <div class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-3xl md:text-5xl p-4">
+    <div
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-3xl md:text-5xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
+    >
       NUESTROS SERVICIOS
     </div>
-    <div class="w-12 md:w-10 mx-auto p-4" :style="{ backgroundColor: companyData?.colorPrimario }">
+    <div
+      class="w-12 md:w-10 mx-auto p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario, color: '#2c3e50' }"
+    >
       <ServicioItem
         v-for="(servicio, i) in servicios"
         :key="servicio.titulo"

@@ -1,11 +1,14 @@
 <template>
   <div class="card">
-    <div class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4">
+    <div
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-5xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
+    >
       MISIÓN Y VISIÓN
     </div>
     <div
       class="w-12 md:w-10 mx-auto text-center"
-      :style="{ backgroundColor: companyData?.colorPrimario }"
+      :style="{ backgroundColor: companyData?.colorPrimario, color: '#2c3e50' }"
     >
       <div class="grid mx-auto p-4 md:gap-3">
         <div class="col-12 lg:col-5 mx-auto">

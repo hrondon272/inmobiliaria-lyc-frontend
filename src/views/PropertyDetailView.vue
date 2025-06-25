@@ -41,7 +41,10 @@
           >
             <template #item="slotProps">
               <div class="image-container" @click="mostrarFotos = true">
-                <img :src="slotProps.item.urlFoto" style="width: 100% !important; display: block" />
+                <img
+                  :src="slotProps.item.urlFoto"
+                  style="max-width: 100% !important; max-height: 600px; display: block"
+                />
                 <div class="hover-overlay">
                   <i class="pi pi-search"></i>
                 </div>
@@ -64,7 +67,7 @@
           >
             <template #item="slotProps">
               <div class="image-container" @click="mostrarVideos = true">
-                <video :src="slotProps.item.urlVideo" class="media-preview"></video>
+                <video playsinline :src="slotProps.item.urlVideo" class="media-gallery"></video>
                 <div class="hover-overlay">
                   <i class="pi pi-search"></i>
                 </div>
@@ -146,6 +149,7 @@
         >
           <template #item="slotProps">
             <video
+              playsinline
               controls
               preload="auto"
               :src="slotProps.item.urlVideo"

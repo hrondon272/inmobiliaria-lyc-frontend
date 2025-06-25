@@ -43,20 +43,23 @@
     </Carousel>
     <div class="w-12 md:w-10 mx-auto">
       <div>
-        <div class="text-center my-4 font-bold uppercase text-4xl py-4 h-10rem">
+        <div
+          class="text-center my-4 font-bold uppercase text-4xl py-4 h-10rem"
+          style="color: #2c3e50"
+        >
           RESPONSABILIDAD, COMPROMISO, CONFIANZA
           <i class="pi pi-check-circle text-4xl ml-2"></i>
         </div>
-        <div class="text-center my-6 font-bold uppercase text-2xl">
+        <div class="text-center my-6 font-bold uppercase text-2xl" style="color: #2c3e50">
           UBICACIÓN
           <i class="pi pi-map-marker text-2xl"></i>
         </div>
         <div class="text-center">
-          <video src="/ubicacion.mp4" class="h-30rem" autoplay controls></video>
+          <video playsinline src="/ubicacion.mp4" class="h-30rem" autoplay controls></video>
         </div>
         <div
           class="py-2 px-4 mt-6 text-3xl font-bold text-center"
-          :style="{ backgroundColor: companyData?.colorPrimario }"
+          :style="{ backgroundColor: companyData?.colorPrimario, color: '#2c3e50' }"
         >
           ¡ENCUENTRA AQUÍ EL INMUEBLE DE TUS SUEÑOS!
           <i class="pi pi-search text-4xl ml-2"></i>
@@ -173,42 +176,54 @@
       <div class="mb-3">
         <div
           class="py-2 px-4 mt-2 text-3xl font-bold text-center"
-          :style="{ backgroundColor: companyData?.colorPrimario }"
+          :style="{ backgroundColor: companyData?.colorPrimario, color: '#2c3e50' }"
         >
           LISTA DESTACADOS
           <i class="pi pi-list-check text-4xl ml-2"></i>
         </div>
       </div>
-      <div class="grid gap-2 my-4 px-2">
+      <div class="grid mb-4">
         <div
           v-for="inmueble in useInmueble.inmuebles.slice(0, 3)"
           :key="inmueble.id"
-          class="sm:col-12 md:col-4 h-10rem mb-4 bg-center bg-cover cursor-pointer card-inmueble"
+          class="col-11 lg:col-4 mx-auto card-inmueble"
           v-tooltip="'Abrir'"
-          @click="abrirInmueble(inmueble.id)"
-          :style="{
-            backgroundImage: `url('${getFotoPrincipal(inmueble)}')`,
-            width: 'calc(33.33% - 1rem)',
-            margin: '0 auto'
-          }"
         >
-          <p class="truncate-multiline">
-            {{ inmueble?.nombre }}
-          </p>
+          <Card class="card-home" :style="{ backgroundColor: 'transparent' }">
+            <template #header>
+              <div class="header-container">
+                <p class="card-title">{{ inmueble?.nombre }}</p>
+                <img
+                  class="cursor-pointer"
+                  alt="user header"
+                  :src="getFotoPrincipal(inmueble) || ''"
+                  style="width: 100%; height: 300px; object-fit: cover"
+                  @click="abrirInmueble(inmueble.id)"
+                />
+              </div>
+            </template>
+          </Card>
         </div>
         <div
           v-for="inmueble in useInmueble.inmuebles.slice(3, 7)"
           :key="inmueble.id"
-          class="sm:col-12 md:col-3 h-10rem bg-center bg-cover cursor-pointer card-inmueble"
+          class="col-11 lg:col-3 mx-auto card-inmueble"
           v-tooltip="'Abrir'"
-          @click="abrirInmueble(inmueble.id)"
-          :style="{
-            backgroundImage: `url('${getFotoPrincipal(inmueble)}')`,
-            width: 'calc(25% - 1rem)',
-            margin: '0 auto'
-          }"
         >
-          <p class="truncate-multiline">{{ inmueble?.nombre }}</p>
+          <Card class="card-home" :style="{ backgroundColor: 'transparent' }">
+            <template #header>
+              <div class="header-container">
+                <p class="card-title">{{ inmueble?.nombre }}</p>
+                <img
+                  class="cursor-pointer"
+                  alt="user header"
+                  :src="getFotoPrincipal(inmueble) || ''"
+                  style="width: 100%; height: 300px; object-fit: cover"
+                  @click="abrirInmueble(inmueble.id)"
+                />
+              </div>
+            </template>
+          </Card>
         </div>
       </div>
     </div>
@@ -357,31 +372,6 @@ function goToRoute(id: string) {
 }
 </script>
 
-<style scoped>
-.card-inmueble:hover {
-  filter: brightness(60%);
-  background-color: #e20d0d;
-}
-.truncate-multiline {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-  font-weight: bold;
-  color: white;
-  font-size: 14px;
-  line-height: 18px;
-  text-align: right;
-}
-</style>
 <style>
 .image-carrusel {
   height: 40rem;
@@ -413,6 +403,50 @@ function goToRoute(id: string) {
 }
 #button-carrusel-id .p-button-icon {
   font-size: 40px !important;
+}
+
+.card-home {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.card-home .header-container {
+  position: relative;
+}
+
+.card-home img {
+  filter: brightness(80%);
+  display: block;
+  border-radius: 0.5rem !important;
+}
+
+.card-home img:hover {
+  filter: brightness(60%);
+}
+
+.card-home .card-title {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  max-width: 70%;
 }
 @media (max-width: 960px) {
   .image-carrusel {

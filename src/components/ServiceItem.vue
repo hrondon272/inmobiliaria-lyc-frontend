@@ -1,7 +1,7 @@
 <template>
   <div class="grid mb-8">
     <div :class="['col-12 md:col-3 text-center', invertir ? 'md:order-2' : 'md:order-1']">
-      <img :src="imagen" :alt="titulo" class="w-6 md:w-full border-round-xl" />
+      <img :src="imagen" :alt="titulo" class="w-8 md:w-full border-round-xl" />
     </div>
 
     <div :class="['col-12 md:col-9', invertir ? 'md:order-1' : 'md:order-2']">
@@ -10,7 +10,7 @@
       <p class="text-justify mt-4" v-for="(p, index) in descripcion" :key="index">
         {{ p }}
       </p>
-      <div class="text-center">
+      <div class="text-center md:text-left">
         <ButtonPrime
           class="mt-4"
           severity="primary"
