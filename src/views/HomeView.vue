@@ -1,16 +1,18 @@
 <template>
   <div class="card bg-white relative" style="z-index: 1; margin-top: -72px">
-    <div class="absolute p-4 z-5" style="top: 22rem; left: 0; right: 0; margin: 0 auto">
-      <div class="mx-auto text-center">
+    <div class="first-div-button-carrusel">
+      <div class="second-div-button-carrusel">
         <ButtonPrime
           v-for="type in companyData?.tipos_inmuebles || []"
           :key="type.id"
           variant="outlined"
           @click="goToRoute(type.id)"
           :label="type.descripcion"
-          :icon="type.icono + ' text-4xl'"
-          class="m-1 text-xs text-red-500 border-red-500 bg-white"
+          :icon="type.icono"
+          class="button-carrusel-class"
           iconPos="top"
+          :title="type.descripcion"
+          id="button-carrusel-id"
         />
       </div>
     </div>
@@ -41,11 +43,11 @@
     </Carousel>
     <div class="w-12 md:w-10 mx-auto">
       <div>
-        <div class="text-center my-4 font-bold uppercase text-5xl py-4 h-10rem">
+        <div class="text-center my-4 font-bold uppercase text-4xl py-4 h-10rem">
           RESPONSABILIDAD, COMPROMISO, CONFIANZA
-          <i class="pi pi-check-circle text-6xl ml-2"></i>
+          <i class="pi pi-check-circle text-4xl ml-2"></i>
         </div>
-        <div class="text-center my-4 font-bold uppercase text-2xl">
+        <div class="text-center my-6 font-bold uppercase text-2xl">
           UBICACIÓN
           <i class="pi pi-map-marker text-2xl"></i>
         </div>
@@ -181,7 +183,7 @@
         <div
           v-for="inmueble in useInmueble.inmuebles.slice(0, 3)"
           :key="inmueble.id"
-          class="col-4 h-10rem mb-4 bg-center bg-cover cursor-pointer card-inmueble"
+          class="sm:col-12 md:col-4 h-10rem mb-4 bg-center bg-cover cursor-pointer card-inmueble"
           v-tooltip="'Abrir'"
           @click="abrirInmueble(inmueble.id)"
           :style="{
@@ -197,7 +199,7 @@
         <div
           v-for="inmueble in useInmueble.inmuebles.slice(3, 7)"
           :key="inmueble.id"
-          class="col-3 h-10rem bg-center bg-cover cursor-pointer card-inmueble"
+          class="sm:col-12 md:col-3 h-10rem bg-center bg-cover cursor-pointer card-inmueble"
           v-tooltip="'Abrir'"
           @click="abrirInmueble(inmueble.id)"
           :style="{
@@ -241,23 +243,29 @@
           backgroundColor: companyData?.colorPrimario,
           backgroundImage: `url('${imagenFrase3}')`,
           filter: 'brightness(40%)',
-          backgroundSize: 'cover'
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
         }"
       ></div>
+      <p class="mx-5 text-center">
+        <span class="relative text-white font-bold uppercase text-4xl py-2 block mb-4">
+          ¿Por qué hacerlo con nosotros?
+          <i class="pi pi-question-circle text-5xl ml-2"></i>
+        </span>
 
-      <span class="relative text-white text-center font-bold uppercase text-4xl py-2 text-center"
-        >¿Por qué hacerlo con nosotros?
-        <i class="pi pi-question-circle text-5xl ml-2"></i>
-      </span>
-      <span class="relative text-white text-center text-2xl">
-        Porque tu tranquilidad es nuestra prioridad. En Inmobiliaria Aguirre L&C entendemos que
-        gestionar una propiedad no solo implica números, contratos y trámites; también implica
-        tiempo, confianza y decisiones importantes. Nos encargamos de todo el proceso con
-        profesionalismo, cercanía y compromiso, para que tú te enfoques en lo que realmente importa.
-        Olvídate de las preocupaciones: te ayudamos a rentabilizar tu propiedad sin complicaciones,
-        con procesos claros, seguros y 100% legales. Gestionamos con responsabilidad, trabajamos con
-        el corazón.
-      </span>
+        <span class="relative text-white xs:text-xl lg:text-2xl lg:mx-5 block mb-4">
+          Porque tu tranquilidad es nuestra prioridad. En Inmobiliaria Aguirre L&C entendemos que
+          gestionar una propiedad no solo implica números, contratos y trámites; también implica
+          tiempo, confianza y decisiones importantes. Nos encargamos de todo el proceso con
+          profesionalismo, cercanía y compromiso, para que tú te enfoques en lo que realmente
+          importa. Olvídate de las preocupaciones: te ayudamos a rentabilizar tu propiedad sin
+          complicaciones, con procesos claros, seguros y 100% legales.
+        </span>
+        <span class="relative text-white sm:text-xl lg:text-2xl lg:mx-5">
+          Gestionamos con responsabilidad, trabajamos con el corazón.
+          <i class="pi pi-heart text-2xl"></i>
+        </span>
+      </p>
     </div>
   </div>
 </template>
@@ -378,9 +386,60 @@ function goToRoute(id: string) {
 .image-carrusel {
   height: 40rem;
 }
+.first-div-button-carrusel {
+  top: 22rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 5;
+  padding: 0;
+}
+.second-div-button-carrusel {
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+}
+.button-carrusel-class {
+  margin: 0.5rem !important;
+  border-radius: 0.5rem !important;
+  padding: 5px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #363636 !important;
+  background-color: #fff !important;
+  border: 1px solid #363636 !important;
+  width: 7rem !important;
+}
+#button-carrusel-id .p-button-icon {
+  font-size: 40px !important;
+}
 @media (max-width: 960px) {
   .image-carrusel {
     height: 20rem;
+  }
+  .first-div-button-carrusel {
+    top: 7rem;
+  }
+  .button-carrusel-class {
+    font-size: 10px !important;
+    width: 6rem !important;
+  }
+  #button-carrusel-id .p-button-icon {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 656px) {
+  .first-div-button-carrusel {
+    top: 5rem;
+    padding: 0;
+  }
+  .button-carrusel-class {
+    font-size: 9px !important;
+    width: 4rem !important;
+  }
+  #button-carrusel-id .p-button-icon {
+    font-size: 16px !important;
   }
 }
 </style>

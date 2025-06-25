@@ -1,10 +1,10 @@
 <template>
   <div class="card bg-white text-white">
     <div
-      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
-      :style="{ backgroundColor: companyData?.colorSecundario }"
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-3xl md:text-5xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
     >
-      Lista de inmuebles
+      LISTA DE INMUEBLES
     </div>
     <div
       class="w-12 md:w-10 mx-auto p-3 md:p-4"
@@ -13,11 +13,11 @@
       <div
         v-if="inmuebles.length === 0"
         class="flex flex-column text-lg my-4 py-4 justify-content-center align-items-center"
-        style="min-height: 500px"
+        style="min-height: 300px"
       >
-        <p class="text-xl font-bold">Sin resultados</p>
+        <p class="text-5xl text-black-alpha-90">Sin resultados...</p>
         <ButtonPrime
-          class="mt-4"
+          class="mt-4 text-black-alpha-90"
           type="button"
           label="Mostrar todos los inmuebles"
           severity="primary"
@@ -31,15 +31,20 @@
             :key="inmueble.id"
             class="field col-12 md:col-6 lg:col-4 xl:col-3 mt-2"
           >
-            <Card>
+            <Card
+              :style="{
+                backgroundColor: companyData?.colorTerciario,
+                boxShadow: '0px 5px 15px ' + companyData?.colorSecundario
+              }"
+            >
               <template #content>
                 <div class="relative">
                   <img :src="getFotoPrincipal(inmueble) || ''" alt="Image" class="media-preview" />
                   <div class="text-center text-sm">
                     <h2>{{ inmueble.nombre }}</h2>
                     <h3>{{ inmueble.ciudad }}</h3>
-                    <div :style="{ backgroundColor: companyData?.colorSecundario }">
-                      <h3 class="text-black-alpha-90 font-semibold text-lg">
+                    <div :style="{ backgroundColor: companyData?.colorPrimario }">
+                      <h3 class="text-black-alpha-90 font-semibold text-2xl">
                         $ {{ getPrecio(parseFloat(inmueble.precio)) }} COP
                       </h3>
                     </div>
@@ -55,6 +60,10 @@
                   </div>
                   <div class="text-center my-2">
                     <ButtonPrime
+                      :style="{
+                        backgroundColor: companyData?.colorSecundario,
+                        border: 'none'
+                      }"
                       type="button"
                       icon="pi pi-eye"
                       label="Ver inmueble"

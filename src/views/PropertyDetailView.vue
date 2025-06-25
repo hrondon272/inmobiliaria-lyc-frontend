@@ -1,8 +1,8 @@
 <template>
   <div class="card bg-white text-white">
     <div
-      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-semibold text-2xl p-4"
-      :style="{ backgroundColor: companyData?.colorSecundario }"
+      class="w-12 md:w-10 mx-auto text-black-alpha-90 font-bold text-2xl p-4"
+      :style="{ backgroundColor: companyData?.colorPrimario }"
     >
       <not-found-404 v-if="visibleError404" />
       <div v-else class="text-center">
@@ -12,11 +12,11 @@
     </div>
     <div
       v-if="!visibleError404"
-      class="w-12 md:w-10 mx-auto p-2"
+      class="w-12 md:w-10 mx-auto"
       :style="{ backgroundColor: companyData?.colorPrimario }"
     >
       <not-found-404 v-if="visibleError404" />
-      <div v-else class="text-2xl font-bold text-center">
+      <div v-else class="text-2xl font-bold text-black-alpha-90 text-center">
         <h2>$ {{ getPrecio(parseFloat(inmueble?.precio || '0')) }} COP</h2>
       </div>
     </div>
@@ -26,12 +26,13 @@
       :style="{ backgroundColor: companyData?.colorPrimario }"
     >
       <div class="grid">
-        <div class="col-12 md:col-6">
+        <div class="col-12 md:col-7">
+          <div class="text-justify text-black-alpha-90 font-semibold text-3xl">Fotos</div>
           <Galleria
             :value="inmueble?.fotos"
             :responsiveOptions="responsiveOptions"
             :numVisible="5"
-            containerStyle="max-width: 450px; margin: auto; border: 0;"
+            containerStyle="max-width: 100%; margin: auto; border: 0;"
             :showItemNavigators="true"
             :showItemNavigatorsOnHover="true"
             :circular="true"
@@ -50,11 +51,12 @@
               <img :src="slotProps.item.urlFoto" style="display: block; width: 50px" />
             </template>
           </Galleria>
+          <div class="text-justify text-black-alpha-90 font-semibold text-3xl">Videos</div>
           <Galleria
             :value="inmueble?.videos"
             :responsiveOptions="responsiveOptions"
             :numVisible="5"
-            containerStyle="max-width: 450px; margin: 32px auto; border: 0;"
+            containerStyle="max-width: 100%; margin: 32px auto; border: none;"
             :showItemNavigators="true"
             :showItemNavigatorsOnHover="true"
             :circular="true"
@@ -62,12 +64,7 @@
           >
             <template #item="slotProps">
               <div class="image-container" @click="mostrarVideos = true">
-                <video
-                  controls
-                  preload="auto"
-                  :src="slotProps.item.urlVideo"
-                  class="media-preview"
-                ></video>
+                <video :src="slotProps.item.urlVideo" class="media-preview"></video>
                 <div class="hover-overlay">
                   <i class="pi pi-search"></i>
                 </div>
@@ -75,9 +72,9 @@
             </template>
           </Galleria>
         </div>
-        <div class="col-12 md:col-6 text-base">
+        <div class="col-12 md:col-5 text-base text-black-alpha-90 mt-0 md:mt-6">
           <div class="flex">
-            <div class="flex-1 text-left">
+            <div class="flex-1 text-left font-semibold">
               <icon-bed />
               Dormitorios
             </div>
@@ -85,7 +82,7 @@
           </div>
           <hr />
           <div class="flex">
-            <div class="flex-1 text-left">
+            <div class="flex-1 text-left font-semibold">
               <icon-bath class="mt-2" />
               Baños
             </div>
@@ -93,17 +90,17 @@
           </div>
           <hr />
           <div class="flex">
-            <div class="flex-1 text-left">
+            <div class="flex-1 text-left font-semibold">
               <icon-area class="mt-2" />
               Área (mt2)
             </div>
             <div class="flex-1 text-right mt-2">{{ inmueble?.areaMetrosCuadrados }}</div>
           </div>
           <hr />
-          <div class="text-justify my-3">Descripción</div>
+          <div class="text-justify my-3 font-semibold">DESCRIPCIÓN</div>
           <div class="text-justify my-3">{{ inmueble?.descripcion }}</div>
-          <div class="text-justify my-3">Características</div>
-          <div class="text-justify my-3">{{ inmueble?.caracteristicas }}</div>
+          <div class="text-justify my-3 font-semibold">CARACTERÍSTICAS</div>
+          <pre class="my-3">{{ inmueble?.caracteristicas }}</pre>
           <div class="text-center">
             <ButtonPrime
               class="my-4"
@@ -120,7 +117,7 @@
           :value="inmueble?.fotos"
           :responsiveOptions="responsiveOptions"
           :numVisible="5"
-          containerStyle="max-width: 750px; margin: auto; border: 0;"
+          containerStyle="max-width: 100%; margin: auto; border: 0;"
           :showItemNavigators="true"
           :showItemNavigatorsOnHover="true"
           :circular="true"
@@ -140,7 +137,7 @@
           :value="inmueble?.videos"
           :responsiveOptions="responsiveOptions"
           :numVisible="5"
-          containerStyle="max-width: 750px; margin: auto; border: 0;"
+          containerStyle="max-width: 100%; margin: auto; border: 0;"
           :showItemNavigators="true"
           :showItemNavigatorsOnHover="true"
           :circular="true"
@@ -152,7 +149,7 @@
               controls
               preload="auto"
               :src="slotProps.item.urlVideo"
-              class="media-preview"
+              class="media-view"
             ></video>
           </template>
         </Galleria>

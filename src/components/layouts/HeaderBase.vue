@@ -27,7 +27,7 @@
             :style="{
               backgroundColor: companyData?.colorSecundario,
               borderColor: companyData?.colorSecundario,
-              color: '#000'
+              color: '#FFF'
             }"
             @click="actionLoginButton"
           />
