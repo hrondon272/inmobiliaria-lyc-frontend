@@ -1,13 +1,14 @@
 <template>
   <div
     v-if="props.isEditImages || (!props.isEditImages && !props.isEditVideos)"
-    class="field col-12 md:col-6 text-center text-white"
+    class="field col-12 md:col-6 text-center"
+    style="color: #2c3e50"
   >
-    <p>Foto principal(.png, .jpg, .jpeg)</p>
+    <p>Foto principal(.png, .jpg, .jpeg, .heic)</p>
     <FileUpload
       ref="fotoPrincipalRef"
       mode="basic"
-      accept=".png,.jpg,.jpeg"
+      accept=".png,.jpg,.jpeg,.HEIC,.heic"
       :maxFileSize="10000000"
       @select="onFotosSeleccionadas($event, true)"
     />
@@ -20,7 +21,7 @@
       ref="fotosInmuebleRef"
       @select="onFotosSeleccionadas($event, false)"
       :multiple="true"
-      accept=".png,.jpg,.jpeg"
+      accept=".png,.jpg,.jpeg,.HEIC,.heic"
       :fileLimit="14"
       invalidFileLimitMessage="Solo puede subir hasta 14 fotos"
     >
@@ -58,7 +59,8 @@
   </div>
   <div
     v-if="props.isEditVideos || (!props.isEditImages && !props.isEditVideos)"
-    class="field col-12 mt-2 text-center text-white"
+    class="field col-12 mt-2 text-center"
+    style="color: #2c3e50"
   >
     <h2>Agregue hasta tres videos del inmueble</h2>
     <p>Por favor tenga en cuenta que:</p>

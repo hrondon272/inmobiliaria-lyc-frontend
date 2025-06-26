@@ -52,7 +52,6 @@ import { useLoaderStore } from '@/stores/loader'
 import type { FormFotosInmueble, FotoInmueble } from '@/interfaces/types'
 import { useConfirm } from '@/plugins/useConfirm'
 import FileUpload from './FileUpload.vue'
-import { resolveURLFiles } from '@/helpers/randomFunctions'
 import { useAuthStore } from '@/stores/auth'
 
 const props = defineProps({

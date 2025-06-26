@@ -189,7 +189,7 @@
       </div>
     </div>
     <div class="field col-6 md:col-3 mt-2">
-      <div class="flex items-center">
+      <div class="flex items-center" style="color: #2c3e50">
         <CheckboxPrime inputId="precioNegociable" v-model="form.precioNegociable" :binary="true" />
         <label for="precioNegociable" class="ml-2"> Negociable? </label>
       </div>
@@ -211,7 +211,7 @@
       </div>
     </div>
     <div v-if="isEditing" class="field col-6 md:col-3 mt-2">
-      <div class="flex items-center">
+      <div class="flex items-center" style="color: #2c3e50">
         <CheckboxPrime inputId="disponible" v-model="form.disponible" :binary="true" />
         <label for="disponible" class="ml-2"> Disponible? </label>
       </div>

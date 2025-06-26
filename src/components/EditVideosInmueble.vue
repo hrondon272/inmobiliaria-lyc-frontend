@@ -13,7 +13,7 @@
                 controls
                 preload="auto"
                 :src="video.urlVideo"
-                class="media-preview"
+                class="media-gallery"
               ></video>
               <ButtonPrime
                 icon="pi pi-times"
@@ -52,7 +52,6 @@ import { useLoaderStore } from '@/stores/loader'
 import type { FormVideosInmueble, VideoInmueble } from '@/interfaces/types'
 import { useConfirm } from '@/plugins/useConfirm'
 import FileUpload from './FileUpload.vue'
-import { resolveURLFiles } from '@/helpers/randomFunctions'
 import { useAuthStore } from '@/stores/auth'
 
 const props = defineProps({

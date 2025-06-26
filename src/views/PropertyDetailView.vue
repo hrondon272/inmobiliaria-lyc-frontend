@@ -54,7 +54,12 @@
               <img :src="slotProps.item.urlFoto" style="display: block; width: 50px" />
             </template>
           </Galleria>
-          <div class="text-justify text-black-alpha-90 font-semibold text-3xl">Videos</div>
+          <div
+            v-if="(inmueble?.videos?.length || 0) > 0"
+            class="text-justify text-black-alpha-90 font-semibold text-3xl"
+          >
+            Videos
+          </div>
           <Galleria
             :value="inmueble?.videos"
             :responsiveOptions="responsiveOptions"

@@ -50,3 +50,19 @@
   position: relative;
   border-radius: 4px;
 }
+
+/* modify all background inputs to white and letter with color #2c3e50 */
+input,
+textarea,
+select,
+.p-select {
+  background-color: #ffffff !important;
+  color: #2c3e50 !important;
+  border: 0.2px solid #2c3e50 !important;
+}
+
+.p-dialog-close-button,
+.p-galleria-close-button {
+  background-color: #2c3e50 !important;
+  z-index: 1 !important;
+}
