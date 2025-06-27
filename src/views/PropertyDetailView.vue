@@ -106,7 +106,7 @@
           </div>
           <hr />
           <div class="text-justify my-3 font-semibold">DESCRIPCIÓN</div>
-          <div class="text-justify my-3">{{ inmueble?.descripcion }}</div>
+          <pre class="text-justify my-3" v-html="descripcionHtml"></pre>
           <div class="text-justify my-3 font-semibold">CARACTERÍSTICAS</div>
           <pre class="my-3">{{ inmueble?.caracteristicas }}</pre>
           <div class="text-center">
@@ -212,6 +212,14 @@ const responsiveOptions = ref([
 ])
 
 const companyData = computed(() => authStore.getCompanyData)
+const descripcionHtml = computed(() => parseLinks(inmueble.value?.descripcion || ''))
+
+function parseLinks(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  return text.replace(urlRegex, (url) => {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  })
+}
 
 const abrirChatWhatsappAsesor = (nombreInmueble: string) => {
   window.open(
