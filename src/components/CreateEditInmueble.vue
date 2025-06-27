@@ -98,16 +98,9 @@
     </div>
     <div class="field col-6 md:col-3 mt-2">
       <FloatLabel>
-        <InputText
-          v-model="form.areaMetrosCuadrados"
-          :class="{ 'p-invalid': v$.areaMetrosCuadrados.$error }"
-          fluid
-        />
+        <InputText v-model="form.areaMetrosCuadrados" fluid />
         <label>Mts cuadrados</label>
       </FloatLabel>
-      <div class="p-error" v-for="error of v$.areaMetrosCuadrados.$errors" :key="error.$uid">
-        <div class="error-msg">{{ error.$message }}</div>
-      </div>
     </div>
     <div class="field col-12 md:col-2 mt-2">
       <ButtonPrime label="Seleccionar" @click="visible = true" fluid />
@@ -116,31 +109,29 @@
       <FloatLabel>
         <InputNumber
           v-model="form.coordenadas.latitud"
-          :class="{ 'p-invalid': v$.coordenadas.latitud.$error }"
           class="border-1 border-round-md"
-          disabled
+          :useGrouping="false"
+          locale="en-US"
+          :minFractionDigits="0"
+          :maxFractionDigits="20"
           fluid
         />
         <label>Latitud</label>
       </FloatLabel>
-      <div class="p-error" v-for="error of v$.coordenadas.latitud.$errors" :key="error.$uid">
-        <div class="error-msg">{{ error.$message }}</div>
-      </div>
     </div>
     <div class="field col-6 md:col-2 mt-2">
       <FloatLabel>
         <InputNumber
           v-model="form.coordenadas.longitud"
-          :class="{ 'p-invalid': v$.coordenadas.longitud.$error }"
           class="border-1 border-round-md"
-          disabled
+          :useGrouping="false"
+          locale="en-US"
+          :minFractionDigits="0"
+          :maxFractionDigits="20"
           fluid
         />
         <label>Longitud</label>
       </FloatLabel>
-      <div class="p-error" v-for="error of v$.coordenadas.longitud.$errors" :key="error.$uid">
-        <div class="error-msg">{{ error.$message }}</div>
-      </div>
     </div>
     <div class="field col-12 md:col-6 mt-2">
       <FloatLabel variant="in">
@@ -308,7 +299,6 @@ const rules = {
   cantidadDormitorios: { required, numeric },
   cantidadBanos: { required, numeric },
   direccion: { required },
-  areaMetrosCuadrados: { required },
   caracteristicas: { required },
   descripcion: { required },
   precio: {
@@ -316,9 +306,7 @@ const rules = {
     minValue: minValue(0)
   },
   coordenadas: {
-    required,
-    latitud: { between: between(-90, 90) },
-    longitud: { between: between(-180, 180) }
+    required
   },
   tipoOperacion: { required },
   idTipo: { required, numeric },
