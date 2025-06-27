@@ -125,7 +125,7 @@
           :value="inmueble?.fotos"
           :responsiveOptions="responsiveOptions"
           :numVisible="5"
-          containerStyle="max-width: 100%; margin: auto; border: 0;"
+          containerStyle="width: 100vw; height: 100vh; background-color: black;"
           :showItemNavigators="true"
           :showItemNavigatorsOnHover="true"
           :circular="true"
@@ -134,8 +134,11 @@
           :fullScreen="true"
         >
           <template #item="slotProps">
-            <img :src="slotProps.item.urlFoto" style="width: 100% !important; display: block" />
+            <div class="gallery-image-wrapper">
+              <img :src="slotProps.item.urlFoto" class="photo-gallery" />
+            </div>
           </template>
+
           <template #thumbnail="slotProps">
             <img :src="slotProps.item.urlFoto" style="display: block; width: 50px" />
           </template>
@@ -280,5 +283,22 @@ onMounted(async () => {
 .hover-overlay i {
   font-size: 2rem;
   color: white;
+}
+
+.photo-gallery {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.gallery-image-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
 }
 </style>
