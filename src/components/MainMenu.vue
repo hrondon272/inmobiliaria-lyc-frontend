@@ -123,6 +123,9 @@ watch(
   color: rgb(255, 255, 255) !important;
   font-weight: bold !important;
 }
+.p-menubar-submenu .p-menubar-item-link {
+  color: rgb(0, 0, 0) !important;
+}
 .p-menubar-item-link:hover {
   border-radius: 6px !important;
   background-color: rgba(88, 88, 88, 0.623) !important;
@@ -133,7 +136,7 @@ watch(
 .p-menubar-item-link.active-menu {
   border-radius: 6px !important;
   background-color: rgba(185, 184, 184, 0.623) !important;
-  color: rgb(255, 255, 255) !important;
+  color: rgb(44, 62, 80);
   font-weight: bold !important;
 }
 
@@ -154,7 +157,6 @@ svg {
   background-color: rgb(255, 255, 255) !important;
   border: none !important;
 }
-
 .p-menubar-mobile .p-menubar-root-list .p-menubar-item-link {
   color: rgb(0, 0, 0) !important;
   font-weight: bold !important;
