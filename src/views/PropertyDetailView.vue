@@ -38,6 +38,9 @@
             :circular="true"
             :autoPlay="true"
             :transitionInterval="6000"
+            :showThumbnails="false"
+            :showIndicators="true"
+            :changeItemOnIndicatorHover="true"
           >
             <template #item="slotProps">
               <div class="image-container" @click="mostrarFotos = true">
@@ -300,5 +303,11 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   background-color: black;
+}
+
+.p-galleria-item button {
+  color: black !important;
+  background-color: black !important;
+  background: black !important;
 }
 </style>
