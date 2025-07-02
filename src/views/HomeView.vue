@@ -228,60 +228,25 @@
       </div>
     </div>
     <map-inmueble />
-    <div
-      class="relative flex flex-wrap align-items-center justify-content-center w-full min-h-10rem mt-4 py-4 bg-center"
-    >
-      <div
-        class="absolute top-0 left-0 w-full h-full bg-center"
-        :style="{
-          backgroundColor: companyData?.colorPrimario || '#2A333E'
-        }"
-      ></div>
-
-      <!-- Texto encima del fondo -->
-      <span
-        class="relative vertical-align-middle text-white text-center font-bold uppercase text-3xl"
-      >
-        "Tu hogar en buenas manos"
+    <p class="m-5 text-center">
+      <span class="relative font-bold uppercase text-4xl py-2 block mb-4" style="color: #2c3e50">
+        ¿Por qué hacerlo con nosotros?
+        <i class="pi pi-question-circle text-5xl ml-2"></i>
       </span>
-    </div>
 
-    <div
-      class="relative flex flex-wrap align-items-center justify-content-center w-full py-4 bg-center"
-      :style="{
-        minHeight: '500px'
-      }"
-    >
-      <div
-        class="absolute top-0 left-0 w-full h-full bg-center"
-        :style="{
-          backgroundColor: companyData?.colorPrimario,
-          backgroundImage: `url('${imagenFrase3}')`,
-          filter: 'brightness(40%)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }"
-      ></div>
-      <p class="mx-5 text-center">
-        <span class="relative text-white font-bold uppercase text-4xl py-2 block mb-4">
-          ¿Por qué hacerlo con nosotros?
-          <i class="pi pi-question-circle text-5xl ml-2"></i>
-        </span>
-
-        <span class="relative text-white xs:text-xl lg:text-2xl lg:mx-5 block mb-4">
-          Porque tu tranquilidad es nuestra prioridad. En Inmobiliaria Aguirre L&C entendemos que
-          gestionar una propiedad no solo implica números, contratos y trámites; también implica
-          tiempo, confianza y decisiones importantes. Nos encargamos de todo el proceso con
-          profesionalismo, cercanía y compromiso, para que tú te enfoques en lo que realmente
-          importa. Olvídate de las preocupaciones: te ayudamos a rentabilizar tu propiedad sin
-          complicaciones, con procesos claros, seguros y 100% legales.
-        </span>
-        <span class="relative text-white sm:text-xl lg:text-2xl lg:mx-5">
-          Gestionamos con responsabilidad, trabajamos con el corazón.
-          <i class="pi pi-heart text-2xl"></i>
-        </span>
-      </p>
-    </div>
+      <span class="relative xs:text-xl lg:text-2xl lg:mx-5 block mb-4" style="color: #2c3e50">
+        Porque tu tranquilidad es nuestra prioridad. En Inmobiliaria Aguirre L&C entendemos que
+        gestionar una propiedad no solo implica números, contratos y trámites; también implica
+        tiempo, confianza y decisiones importantes. Nos encargamos de todo el proceso con
+        profesionalismo, cercanía y compromiso, para que tú te enfoques en lo que realmente importa.
+        Olvídate de las preocupaciones: te ayudamos a rentabilizar tu propiedad sin complicaciones,
+        con procesos claros, seguros y 100% legales.
+      </span>
+      <span class="relative sm:text-xl lg:text-2xl lg:mx-5" style="color: #2c3e50">
+        Gestionamos con responsabilidad, trabajamos con el corazón.
+        <i class="pi pi-heart text-2xl"></i>
+      </span>
+    </p>
   </div>
 </template>
 
@@ -299,8 +264,6 @@ import type { LocationQuery } from 'vue-router'
 const authStore = useAuthStore()
 const useInmueble = useInmuebleStore()
 const router = useRouter()
-
-const imagenFrase3 = ref('/carrusel/carrusel-imagen-2.png')
 
 const form = ref<homeFilters>({
   tipoSeleccionado: null,
@@ -323,6 +286,14 @@ const imagenesCarrusel = ref([
   {
     name: 'Imagen 2',
     image: 'carrusel-imagen-2.png'
+  },
+  {
+    name: 'Imagen 3',
+    image: 'carrusel-imagen-3.png'
+  },
+  {
+    name: 'Imagen 4',
+    image: 'carrusel-imagen-4.jpg'
   }
 ])
 
