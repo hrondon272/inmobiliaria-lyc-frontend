@@ -7,9 +7,7 @@
     <div :class="['col-12 md:col-9', invertir ? 'md:order-1' : 'md:order-2']">
       <h2 class="text-xl md:text-3xl font-bold">{{ titulo }}</h2>
       <hr class="my-2" />
-      <p class="text-justify mt-4" v-for="(p, index) in descripcion" :key="index">
-        {{ p }}
-      </p>
+      <p class="text-justify mt-4" v-for="(p, index) in descripcion" :key="index" v-html="p" />
       <div class="text-center md:text-left">
         <ButtonPrime
           class="mt-4"
