@@ -8,11 +8,25 @@
   >
     <div class="flex justify-content-center gap-3 mb-4 my-2">
       <label for="email" class="font-semibold w-3">Correo</label>
-      <InputText id="email" v-model="form.email" />
+      <InputText id="email" v-model="form.email" class="w-8" />
     </div>
     <div class="flex justify-content-center gap-3 mb-2">
       <label for="password" class="font-semibold w-3">Contraseña</label>
-      <Password id="password" v-model="form.password" />
+      <!-- <Password id="password" v-model="form.password" class="custom-password" toggleMask /> -->
+      <InputText
+        id="password"
+        v-model="form.password"
+        :type="passwordVisible ? 'text' : 'password'"
+        class="w-8"
+      />
+    </div>
+    <div class="text-right">
+      <small
+        @click="passwordVisible = !passwordVisible"
+        class="cursor-pointer text-primary underline"
+      >
+        {{ passwordVisible ? 'Ocultar contraseña' : 'Mostrar contraseña' }}
+      </small>
     </div>
     <ul v-if="v$.email.$errors.length" class="input-errors-list ml-4">
       <li v-for="error of v$.email.$errors" :key="error.$uid">
@@ -57,6 +71,8 @@ const form = ref({
   email: '',
   password: ''
 })
+
+const passwordVisible = ref(false)
 
 const rules = {
   email: {
